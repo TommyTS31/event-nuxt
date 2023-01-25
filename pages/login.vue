@@ -1,11 +1,7 @@
 <template>
-    <div>
-    <p>Bismillah ir rahman ir rahim</p>
-    </div>
+  <div></div>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
-<style scoped>
-</style>
+<style scoped></style>
