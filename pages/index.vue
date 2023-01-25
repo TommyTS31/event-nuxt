@@ -4,7 +4,7 @@
       <div class="container flex flex-wrap items-center justify-between mx-auto mt-2">
         <a href="#" class="flex items-center p-4">
           <span
-            class="self-center text-3xl font-serif whitespace-nowrap text-primary font-bold"
+            class="self-center text-4xl font-serif whitespace-nowrap text-primary font-bold"
             >OnEvent</span
           >
         </a>
@@ -35,22 +35,34 @@
             class="flex flex-col border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white"
           >
             <li>
-              <a href="#" class="block py-2 pl-3 pr-4 text-black" aria-current="page"
+              <a
+                href="#"
+                class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
+                aria-current="page"
                 >Home</a
               >
             </li>
             <li>
-              <a href="#" class="block py-2 pl-3 pr-4 text-black" aria-current="page"
+              <a
+                href="#"
+                class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
+                aria-current="page"
                 >Search</a
               >
             </li>
             <li>
-              <a href="#" class="block py-2 pl-3 pr-4 text-black" aria-current="page"
+              <a
+                href="#"
+                class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
+                aria-current="page"
                 >Sign In</a
               >
             </li>
             <li>
-              <a href="#" class="block py-2 pl-3 pr-4 text-black" aria-current="page"
+              <a
+                href="#"
+                class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
+                aria-current="page"
                 >Sign Up</a
               >
             </li>
@@ -61,9 +73,19 @@
     <div>
       <img
         class="object-cover w-full h-96"
-        src="../assets/images/default.jpg"
+        src="../assets/images/homepage3.jpg"
         alt="event"
       />
+    </div>
+    <div class="py-16 px-96 flex font-sans">
+      <input
+        type="text"
+        id="first_name"
+        class="bg-gray-100 text-black text-base w-full p-2.5"
+        placeholder="E.g. Indie Rock"
+        required
+      />
+      <button class="bg-secondary text-white px-10">Search</button>
     </div>
   </div>
 </template>
