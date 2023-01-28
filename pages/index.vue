@@ -1,75 +1,6 @@
 <template>
   <div>
-    <nav class="px-2 bg-white border-gray-200">
-      <div class="container flex flex-wrap items-center justify-between mx-auto mt-2">
-        <a href="#" class="flex items-center p-4">
-          <span
-            class="self-center text-4xl font-serif whitespace-nowrap text-primary font-bold"
-            >OnEvent</span
-          >
-        </a>
-        <button
-          data-collapse-toggle="navbar-dropdown"
-          type="button"
-          class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-          aria-controls="navbar-dropdown"
-          aria-expanded="false"
-        >
-          <span class="sr-only">Open main menu</span>
-          <svg
-            class="w-6 h-6"
-            aria-hidden="true"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-        </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
-          <ul
-            class="flex flex-col border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white"
-          >
-            <li>
-              <a
-                href="#"
-                class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
-                aria-current="page"
-                >Home</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
-                aria-current="page"
-                >Search</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
-                aria-current="page"
-                >Sign In</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
-                aria-current="page"
-                >Sign Up</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <NavigationBar />
     <div>
       <img
         class="object-cover w-full h-96"
@@ -86,6 +17,15 @@
         required
       />
       <button class="bg-secondary text-white px-10">Search</button>
+    </div>
+    <div class="px-96 container flex flex-row" v-for="n in 6">
+      <div class="max-w-sm p-6 bg-white border border-gray-100 shadow text-black">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight">Chinese Food Event</h5>
+        <p class="mb-3 font-normal">
+          Here are the biggest enterprise technology acquisitions of 2021 so far, in
+          reverse chronological order.
+        </p>
+      </div>
     </div>
   </div>
 </template>
