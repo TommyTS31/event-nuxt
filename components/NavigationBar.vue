@@ -35,7 +35,7 @@
         >
           <li>
             <a
-              href="#"
+              href="/"
               class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
               aria-current="page"
               >Home</a
@@ -51,7 +51,7 @@
           </li>
           <li>
             <a
-              href="#"
+              href="/login"
               class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
               aria-current="page"
               >Sign In</a
@@ -59,7 +59,7 @@
           </li>
           <li>
             <a
-              href="#"
+              href="/register"
               class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
               aria-current="page"
               >Sign Up</a
