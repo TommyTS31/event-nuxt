@@ -2,7 +2,7 @@
   <div
     class="w-full max-w-sm p-4 bg-white border border-gray-200 shadow sm:p-6 md:p-8 font-sans"
   >
-    <form class="space-y-6" action="#">
+    <form class="space-y-6">
       <h5 class="text-xl font-medium text-black">Sign in</h5>
       <div>
         <label for="email" class="block mb-2 text-sm font-medium text-black"
@@ -11,7 +11,7 @@
         <input
           type="text"
           name="first_name"
-          id="first_name"
+          v-model="user.first_name"
           class="bg-gray-50 border border-gray-300 text-black text-sm block w-full p-2.5"
           placeholder="Michael"
           required
@@ -24,9 +24,9 @@
         <input
           type="text"
           name="last_name"
-          id="last_name"
           class="bg-gray-50 border border-gray-300 text-black text-sm block w-full p-2.5"
           placeholder="Jack's Son"
+          v-model="user.last_name"
           required
         />
       </div>
@@ -35,7 +35,7 @@
         <input
           type="email"
           name="email"
-          id="email"
+          v-model="user.email"
           class="bg-gray-50 border border-gray-300 text-black text-sm block w-full p-2.5"
           placeholder="name@company.com"
           required
@@ -48,7 +48,7 @@
         <input
           type="password"
           name="password"
-          id="password"
+          v-model="user.password"
           placeholder="••••••••"
           class="bg-gray-50 border border-gray-300 text-black text-sm block w-full p-2.5"
           required
@@ -68,7 +68,7 @@
         />
       </div>
       <button
-        type="submit"
+        v-on:click="show"
         class="w-full text-white bg-secondary hover:bg-secondarylight focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center"
       >
         Create an account
@@ -80,3 +80,28 @@
     </form>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      user: {
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    async show() {
+      console.log(this.user.email);
+      const { data: response } = await useFetch("http://localhost:5000/auth/register", {
+        method: "POST",
+        body: { user: this.user },
+      });
+      console.log(response.value);
+    },
+  },
+};
+</script>
