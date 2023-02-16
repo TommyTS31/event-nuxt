@@ -57,6 +57,7 @@ export default {
     async show() {
       console.log(this.user.email);
       const { data: response } = await useFetch("http://localhost:5000/auth/login", {
+        credentials: "include",
         method: "POST",
         body: { user: this.user },
       });

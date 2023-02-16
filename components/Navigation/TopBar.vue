@@ -1,12 +1,12 @@
 <template>
-  <nav class="px-2 bg-white border-gray-200">
-    <div class="container flex flex-wrap items-center justify-between mx-auto mt-2">
-      <a href="#" class="flex items-center p-4">
+  <nav class="bg-white px-2 w-full z-20 top-0 left-0 border-b border-gray-100">
+    <div class="container flex flex-wrap items-center justify-between mx-auto">
+      <NuxtLink to="/" class="flex items-center p-4">
         <span
-          class="self-center text-4xl font-serif whitespace-nowrap text-primary font-bold"
+          class="self-center text-3xl font-serif whitespace-nowrap text-primary font-bold"
           >OnEvent</span
         >
-      </a>
+      </NuxtLink>
       <button
         data-collapse-toggle="navbar-dropdown"
         type="button"
@@ -34,35 +34,35 @@
           class="flex flex-col border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white"
         >
           <li>
-            <a
-              href="/"
+            <NuxtLink
+              to="/"
               class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
               aria-current="page"
-              >Home</a
+              >Home</NuxtLink
             >
           </li>
           <li>
-            <a
-              href="#"
+            <NuxtLink
+              to="#"
               class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
               aria-current="page"
-              >Search</a
+              >Search</NuxtLink
             >
           </li>
           <li>
-            <a
-              href="/login"
+            <NuxtLink
+              to="/login"
               class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
               aria-current="page"
-              >Sign In</a
+              >Sign In</NuxtLink
             >
           </li>
           <li>
-            <a
-              href="/register"
+            <NuxtLink
+              to="/register"
               class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
               aria-current="page"
-              >Sign Up</a
+              >Sign Up</NuxtLink
             >
           </li>
         </ul>

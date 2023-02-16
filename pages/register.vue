@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavigationBar />
+    <NavigationTopBar />
     <div class="flex justify-center content-center mt-16">
       <AuthRegisterCard />
     </div>

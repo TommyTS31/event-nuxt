@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavigationBar />
+    <NavigationTopBar />
     <div>
       <img
         class="object-cover w-full h-96"
