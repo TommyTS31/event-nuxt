@@ -11,7 +11,22 @@
         <DashboardDataCard dataType="Participants" computedData="56" iconType="warning" />
       </div>
     </div>
+    <FormSubmitButton buttonText="Test" />
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  async mounted() {
+    const cookie = useCookie("access_token", { httpOnly: true });
+    console.log(cookie.value);
+    const { data: response } = await useFetch("http://localhost:5000/events/test", {
+      credentials: "include",
+      headers: { authorization: "Bearer " + cookie.value },
+      method: "POST",
+      body: {},
+    });
+    console.log(response.value);
+  },
+};
+</script>

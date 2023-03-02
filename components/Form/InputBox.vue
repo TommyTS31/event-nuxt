@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label class="block mb-2 ext-sm font-medium text-black">{{ label }}</label>
+    <label class="block py-3 text-sm font-regular text-black">{{ label }}</label>
     <textarea
       type="text"
       placeholder="Example description for the event"

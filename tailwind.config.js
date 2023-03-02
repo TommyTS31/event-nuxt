@@ -14,10 +14,11 @@ module.exports = {
         primary: "#A17A66",
         secondary: "#65748a",
         secondarylight: "#687d9c",
+        primarylight: "#bf9c8a",
       },
       fontFamily: {
-        sans: ["Lexend", "Public Sans", "sans-serif"],
-        serif: ["Merriweather", "serif"],
+        sans: ["Source Sans Pro", "Public Sans", "sans-serif"],
+        serif: ["Gloock", "serif"],
       },
     },
   },

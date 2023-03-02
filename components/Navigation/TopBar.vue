@@ -36,7 +36,7 @@
           <li>
             <NuxtLink
               to="/"
-              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
+              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
               aria-current="page"
               >Home</NuxtLink
             >
@@ -44,7 +44,7 @@
           <li>
             <NuxtLink
               to="#"
-              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
+              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
               aria-current="page"
               >Search</NuxtLink
             >
@@ -52,7 +52,7 @@
           <li>
             <NuxtLink
               to="/login"
-              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
+              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
               aria-current="page"
               >Sign In</NuxtLink
             >
@@ -60,7 +60,7 @@
           <li>
             <NuxtLink
               to="/register"
-              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black"
+              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
               aria-current="page"
               >Sign Up</NuxtLink
             >

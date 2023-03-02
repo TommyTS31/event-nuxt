@@ -82,13 +82,11 @@
 </template>
 
 <script setup>
-definePageMeta({
-  layout: "event",
-});
 const id = useRoute().params;
 const { data: response } = await useFetch("http://localhost:5000/events/find", {
   method: "POST",
   body: { id: parseInt(id.id) },
 });
 const event = response.value;
+console.log(event);
 </script>
