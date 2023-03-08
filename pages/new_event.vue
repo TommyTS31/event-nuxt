@@ -15,12 +15,14 @@
               placeholder="New Event"
               inputType="text"
               v-model="event.title"
+              wordLimit="70"
             />
             <FormInputBox
               label="Description"
               placeholder="Description for the new event"
               inputType="multi-text"
               v-model="event.description"
+              wordLimit="300"
             />
             <div class="mt-6">
               <FormTagSearch :displayOption="display" @selected-change="setSelected" />
@@ -61,7 +63,7 @@
             />
           </div>
           <div class="pb-10 pt-8">
-            <FormSubmitButton buttonText="Create Event" v-on:click="show" />
+            <FormSubmitButton buttonText="Create Event" v-on:click="createEvent" />
           </div>
         </form>
       </div>
@@ -80,19 +82,20 @@ export default {
         time: "",
       },
       tagSearch: "",
-      dbTags: ["Chinese", "Food", "Taster", "Videogames"],
-      selectedTags: ["Football"],
+      dbTags: [],
+      selectedTags: [],
       display: false,
     };
   },
   methods: {
-    async show() {
-      console.log(this.event.title);
+    async createEvent() {
+      const cookie = useCookie("access_token", { httpOnly: true });
       const { data: response } = await useFetch("http://localhost:5000/events/create", {
         method: "POST",
+        headers: { authorization: "Bearer " + cookie.value },
         body: { event: this.event, selectedTags: this.selectedTags },
       });
-      console.log(response.value);
+      this.$router.push("/dashboard");
     },
     removeTag(tag) {
       const index = this.tags.indexOf(tag);
@@ -107,11 +110,9 @@ export default {
     clickedOutside() {
       this.display = false;
       console.log("clicked");
-      console.log(this.display);
     },
     setSelected(s) {
       this.selectedTags = s;
-      console.log(this.selectedTags);
     },
   },
 };

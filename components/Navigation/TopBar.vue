@@ -49,7 +49,7 @@
               >Search</NuxtLink
             >
           </li>
-          <li>
+          <li v-if="!isLoggedIn">
             <NuxtLink
               to="/login"
               class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
@@ -57,7 +57,7 @@
               >Sign In</NuxtLink
             >
           </li>
-          <li>
+          <li v-if="!isLoggedIn">
             <NuxtLink
               to="/register"
               class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
@@ -65,12 +65,56 @@
               >Sign Up</NuxtLink
             >
           </li>
+          <li v-if="isLoggedIn">
+            <NuxtLink
+              to="/dashboard"
+              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
+              aria-current="page"
+              >Dashboard</NuxtLink
+            >
+          </li>
+          <li v-if="isLoggedIn">
+            <NuxtLink
+              to="/dashboard"
+              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
+              aria-current="page"
+              >Profile</NuxtLink
+            >
+          </li>
+          <li v-if="isLoggedIn">
+            <button
+              @click="logout"
+              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
+            >
+              Sign Out
+            </button>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 </template>
 
-<script></script>
+<script setup>
+import { ref, computed } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const isLoggedIn = computed(() => {
+  const cookie = useCookie("access_token", { httpOnly: true });
+  if (cookie.value) {
+    return true;
+  } else {
+    return false;
+  }
+});
+
+function logout() {
+  const cookie = useCookie("access_token");
+  cookie.value = null;
+  router.go();
+}
+</script>
 
 <style></style>

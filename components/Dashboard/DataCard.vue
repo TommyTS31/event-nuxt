@@ -1,5 +1,7 @@
 <template>
-  <div class="w-64 bg-white border border-gray-200 shadow sm:p-1 md:p-5 font-sans mx-2">
+  <div
+    class="w-1/4 bg-white border border-gray-200 shadow sm:p-1 md:p-5 font-sans rounded-sm"
+  >
     <div class="flex">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +55,7 @@
       </svg>
 
       <div class="flex flex-col ml-4">
-        <p class="text-lg font-light text-gray-400">{{ dataType }}</p>
+        <p class="text-lg font-regular text-gray-400">{{ dataType }}</p>
         <p class="text-6xl">{{ computedData }}</p>
       </div>
     </div>

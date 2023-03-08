@@ -84,6 +84,7 @@ export default {
       if (!this.selectedTags.includes(tag)) {
         this.selectedTags.push(tag);
         this.displayList = false;
+        this.tagSearch = "";
         this.$emit("selectedChange", this.selectedTags);
       }
     },

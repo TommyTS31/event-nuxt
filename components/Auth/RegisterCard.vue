@@ -77,7 +77,7 @@ export default {
         method: "POST",
         body: { user: this.user },
       });
-      this.$router.push("/dashbaord");
+      this.$router.push("/login");
     },
   },
 };
