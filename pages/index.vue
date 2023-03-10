@@ -8,21 +8,25 @@
         alt="event"
       />
     </div>
-    <div class="pt-16 pb-6 px-80 flex font-sans">
-      <input
-        type="text"
-        id="first_name"
-        class="bg-gray-100 text-black text-base w-full p-2.5"
-        placeholder="E.g. Indie Rock"
-        required
-      />
-      <button class="bg-secondary text-white px-10">Search</button>
+    <div class="flex justify-center">
+      <div class="pt-16 pb-6 w-8/12 max-md:w-11/12 flex font-sans">
+        <input
+          type="text"
+          id="first_name"
+          class="bg-gray-100 text-black text-base w-full p-2.5"
+          placeholder="E.g. Indie Rock"
+          required
+        />
+        <button class="bg-secondary text-white px-10 max-md:px-3 max-md:text-sm">
+          Search
+        </button>
+      </div>
     </div>
     <HomeNavigationTabs />
     <HomeEventCards />
   </div>
 </template>
 
-<script setup></script>
+<script></script>
 
 <style scoped></style>

@@ -6,8 +6,8 @@
         <div class="w-full h-80 overflow-hidden">
           <img src="../../assets/images/homepage1.jpg" alt="" />
         </div>
-        <div class="flex flex-row mt-6 justify-between h-3/4">
-          <div class="w-4/5 mr-6">
+        <div class="flex flex-row mt-6 md:justify-between h-3/4 max-md:flex-col">
+          <div class="w-4/5 mr-6 max-md:w-full">
             <h1 class="text-5xl font-semibold">{{ event.title }}</h1>
             <p class="text-gray-300 text-md pt-2">
               Event by: {{ event.creator.first_name }} {{ event.creator.last_name }}
@@ -29,7 +29,7 @@
           <!-- Extra Data Card + Attend Button -->
 
           <div
-            class="w-1/5 p-4 bg-white shadow border-gray-200 sm:p-6 md:p-4 font-sans flex flex-col justify-between"
+            class="w-1/5 p-4 bg-white shadow border-gray-200 sm:p-6 md:p-4 font-sans flex flex-col justify-between max-md:w-full"
           >
             <dl class="max-w-md text-black divide-y divide-gray-200">
               <div class="flex flex-col pb-3">
@@ -42,7 +42,7 @@
                   {{ event.time }}
                 </dd>
               </div>
-              <div class="flex flex-col pt-3">
+              <div class="flex flex-col pt-3 max-md:mb-3">
                 <dt class="mb-1 text-gray-500 md:text-lg font-semibold">Location</dt>
                 <dd class="text-md font-semibold">{{ event.location }}</dd>
               </div>
