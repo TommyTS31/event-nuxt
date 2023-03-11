@@ -5,13 +5,25 @@
       <div class="flex justify-center content-center mt-16 flex-col w-7/12">
         <!-- Data Cards -->
         <!-- normal=blue, danger=red, good=green, warning=yellow, notif=purple -->
-        <div class="flex space-x-4">
-          <DashboardDataCard dataType="Total" computedData="14" iconType="good" />
-          <DashboardDataCard dataType="Active" computedData="2" iconType="normal" />
-          <DashboardDataCard dataType="Expired" computedData="12" iconType="danger" />
+        <div class="flex space-x-4" v-if="dashboardStats">
+          <DashboardDataCard
+            dataType="Total"
+            :computedData="dashboardStats.all"
+            iconType="good"
+          />
+          <DashboardDataCard
+            dataType="Active"
+            :computedData="dashboardStats.current"
+            iconType="normal"
+          />
+          <DashboardDataCard
+            dataType="Expired"
+            :computedData="dashboardStats.expired"
+            iconType="danger"
+          />
           <DashboardDataCard
             dataType="Participants"
-            computedData="56"
+            :computedData="dashboardStats.attendees"
             iconType="warning"
           />
         </div>
@@ -32,4 +44,19 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref, onMounted, onBeforeMount } from "vue";
+const dashboardStats = ref();
+const cookie = useCookie("access_token", { httpOnly: true });
+onMounted(async () => {
+  const { data: response } = await useFetch(
+    "http://localhost:5000/analytics/dashboard_statistics",
+    {
+      method: "GET",
+      headers: { authorization: "Bearer " + cookie.value },
+    }
+  );
+  console.log(response.value);
+  dashboardStats.value = response.value;
+});
+</script>

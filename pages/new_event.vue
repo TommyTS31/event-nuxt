@@ -72,6 +72,8 @@
 </template>
 
 <script>
+import { useToast } from "tailvue";
+const toast = useToast();
 export default {
   data() {
     return {
@@ -90,13 +92,19 @@ export default {
   methods: {
     async createEvent() {
       const cookie = useCookie("access_token", { httpOnly: true });
-      const { data: response } = await useFetch("http://localhost:5000/events/create", {
-        method: "POST",
-        headers: { authorization: "Bearer " + cookie.value },
-        body: { event: this.event, selectedTags: this.selectedTags },
-      });
-      this.$router.push("/dashboard");
+      try {
+        const { data: response } = await useFetch("http://localhost:5000/events/create", {
+          method: "POST",
+          headers: { authorization: "Bearer " + cookie.value },
+          body: { event: this.event, selectedTags: this.selectedTags },
+        });
+        toast.show("New event created!");
+        this.$router.push("/dashboard");
+      } catch (err) {
+        toast.show("Something went wrong");
+      }
     },
+
     removeTag(tag) {
       const index = this.tags.indexOf(tag);
       this.tags.splice(index, 1);

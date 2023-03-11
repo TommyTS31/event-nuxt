@@ -37,6 +37,8 @@
 </template>
 
 <script>
+import { useToast } from "tailvue";
+const toast = useToast();
 export default {
   data() {
     return {
@@ -48,15 +50,19 @@ export default {
   },
   methods: {
     async login() {
-      console.log(this.user.email);
-      const { data: response } = await useFetch("http://localhost:5000/auth/login", {
-        credentials: "include",
-        method: "POST",
-        body: { user: this.user },
-      });
-      const authCookie = useCookie("access_token");
-      authCookie.value = response.value.token;
-      this.$router.push("/dashboard");
+      try {
+        const { data: response } = await useFetch("http://localhost:5000/auth/login", {
+          credentials: "include",
+          method: "POST",
+          body: { user: this.user },
+        });
+        console.log(response.value);
+        const authCookie = useCookie("access_token");
+        authCookie.value = response.value.token;
+        this.$router.push("/dashboard");
+      } catch (err) {
+        toast.show("Wrong Email or Password");
+      }
     },
   },
 };

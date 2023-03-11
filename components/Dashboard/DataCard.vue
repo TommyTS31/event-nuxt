@@ -66,7 +66,7 @@
 export default {
   props: {
     dataType: String,
-    computedData: String,
+    computedData: Number,
     iconType: String,
   },
 };

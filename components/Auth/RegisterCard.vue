@@ -72,7 +72,6 @@ export default {
   },
   methods: {
     async register() {
-      console.log(this.user.email);
       const { data: response } = await useFetch("http://localhost:5000/auth/register", {
         method: "POST",
         body: { user: this.user },
