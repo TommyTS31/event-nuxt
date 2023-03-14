@@ -59,6 +59,8 @@
 </template>
 
 <script>
+const config = useRuntimeConfig();
+
 export default {
   data() {
     return {
@@ -72,7 +74,8 @@ export default {
   },
   methods: {
     async register() {
-      const { data: response } = await useFetch("http://localhost:5000/auth/register", {
+      const { data: response } = await useFetch("/auth/register", {
+        baseURL: config.baseURL,
         method: "POST",
         body: { user: this.user },
       });

@@ -69,6 +69,7 @@
 </template>
 
 <script>
+const config = useRuntimeConfig();
 export default {
   props: ["displayOption"],
   data() {
@@ -96,7 +97,8 @@ export default {
     // Opening and closing the autocomplete
     async openList() {
       this.displayList = true;
-      const { data: response } = await useFetch("http://localhost:5000/tags/search", {
+      const { data: response } = await useFetch("/tags/search", {
+        baseURL: config.baseURL,
         method: "POST",
         body: { search: this.tagSearch },
       });
@@ -112,7 +114,8 @@ export default {
   },
   computed: {
     async findTags() {
-      const { data: response } = await useFetch("http://localhost:5000/tags/search", {
+      const { data: response } = await useFetch("/tags/search", {
+        baseURL: config.baseURL,
         method: "POST",
         body: { search: this.tagSearch },
       });

@@ -46,16 +46,15 @@
 
 <script setup>
 import { ref, onMounted, onBeforeMount } from "vue";
+const config = useRuntimeConfig();
 const dashboardStats = ref();
 const cookie = useCookie("access_token", { httpOnly: true });
 onMounted(async () => {
-  const { data: response } = await useFetch(
-    "http://localhost:5000/analytics/dashboard_statistics",
-    {
-      method: "GET",
-      headers: { authorization: "Bearer " + cookie.value },
-    }
-  );
+  const { data: response } = await useFetch("/analytics/dashboard_statistics", {
+    baseURL: config.baseURL,
+    method: "GET",
+    headers: { authorization: "Bearer " + cookie.value },
+  });
   console.log(response.value);
   dashboardStats.value = response.value;
 });

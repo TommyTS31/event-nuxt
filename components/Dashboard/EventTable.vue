@@ -82,6 +82,7 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import { useToast } from "tailvue";
+const config = useRuntimeConfig();
 const toast = useToast();
 const pages = ref(5);
 const events = ref();
@@ -89,13 +90,11 @@ const start = ref(0);
 const end = ref(5);
 const cookie = useCookie("access_token", { httpOnly: true });
 onMounted(async () => {
-  const { data: response } = await useFetch(
-    "http://localhost:5000/events/find_all_by_user",
-    {
-      method: "POST",
-      headers: { authorization: "Bearer " + cookie.value },
-    }
-  );
+  const { data: response } = await useFetch("/events/find_all_by_user", {
+    baseURL: config.baseURL,
+    method: "POST",
+    headers: { authorization: "Bearer " + cookie.value },
+  });
   events.value = response.value;
 });
 

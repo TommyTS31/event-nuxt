@@ -39,6 +39,8 @@
 <script>
 import { useToast } from "tailvue";
 const toast = useToast();
+const config = useRuntimeConfig();
+
 export default {
   data() {
     return {
@@ -51,7 +53,8 @@ export default {
   methods: {
     async login() {
       try {
-        const { data: response } = await useFetch("http://localhost:5000/auth/login", {
+        const { data: response } = await useFetch("/auth/login", {
+          baseURL: config.baseURL,
           credentials: "include",
           method: "POST",
           body: { user: this.user },

@@ -74,6 +74,7 @@
 <script>
 import { useToast } from "tailvue";
 const toast = useToast();
+const config = useRuntimeConfig();
 export default {
   data() {
     return {
@@ -93,7 +94,8 @@ export default {
     async createEvent() {
       const cookie = useCookie("access_token", { httpOnly: true });
       try {
-        const { data: response } = await useFetch("http://localhost:5000/events/create", {
+        const { data: response } = await useFetch("/events/create", {
+          baseURL: config.baseURL,
           method: "POST",
           headers: { authorization: "Bearer " + cookie.value },
           body: { event: this.event, selectedTags: this.selectedTags },

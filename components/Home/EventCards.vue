@@ -37,8 +37,11 @@
 <script setup>
 const id = useRoute().params;
 const cookie = useCookie("access_token", { httpOnly: true });
-const { data: response } = await useFetch("http://localhost:5000/events/get_all", {
+const config = useRuntimeConfig();
+const { data: response } = await useFetch("/events/get_all", {
+  baseURL: config.baseURL,
   method: "GET",
+  headers: { api_key: config.api_key },
 });
 const allEvents = response.value;
 </script>

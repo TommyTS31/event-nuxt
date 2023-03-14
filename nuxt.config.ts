@@ -9,5 +9,11 @@ export default defineNuxtConfig({
     },
     modules: [
       '@tailvue/nuxt',
-    ]
+    ],
+    runtimeConfig: {
+      public: {
+        api_key: process.env.DEFAULT_API_KEY,
+        baseURL: "http://localhost:5000"
+      }
+    }
 })

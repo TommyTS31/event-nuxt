@@ -32,15 +32,15 @@
 <script setup>
 import { ref, onMounted } from "vue";
 const attendees = ref();
+const config = useRuntimeConfig();
+
 const cookie = useCookie("access_token", { httpOnly: true });
 onMounted(async () => {
-  const { data: response } = await useFetch(
-    "http://localhost:5000/events/find_attendees_for_creator",
-    {
-      method: "POST",
-      headers: { authorization: "Bearer " + cookie.value },
-    }
-  );
+  const { data: response } = await useFetch("/events/find_attendees_for_creator", {
+    baseURL: config.baseURL,
+    method: "POST",
+    headers: { authorization: "Bearer " + cookie.value },
+  });
   attendees.value = response.value;
 });
 </script>
