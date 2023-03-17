@@ -22,11 +22,12 @@
         </button>
       </div>
     </div>
-    <HomeNavigationTabs />
-    <HomeEventCards />
+    <HomeNavigationTabs @event-option="(e) => (eventType = e)" />
+    <HomeEventCards :eventOption="eventType" />
   </div>
 </template>
 
-<script></script>
-
-<style scoped></style>
+<script setup>
+import { ref, onMounted } from "vue";
+const eventType = ref(0);
+</script>

@@ -17,11 +17,13 @@
           <td class="p-2">{{ att.user.email }}</td>
           <td class="p-2">{{ att.event.title }}</td>
           <td class="pr-4">
+            <!-- TODO Go to event -->
             <button
               class="w-full text-white bg-secondary font-regular hover:bg-secondarylight text-xs rounded-sm text-center p-1"
             >
               View Event
             </button>
+            <!-- TODO Add pagination -->
           </td>
         </tr>
       </tbody>

@@ -1,6 +1,7 @@
 <template>
   <div v-if="event">
     <NavigationTopBar />
+    <!-- TODO User guard, if registered or is creator, don't join -->
     <div class="flex justify-center content-center mt-8">
       <div class="w-full max-w-7xl p-4 bg-white border-gray-200 sm:p-6 md:p-8 font-sans">
         <div class="w-full h-80 overflow-hidden">

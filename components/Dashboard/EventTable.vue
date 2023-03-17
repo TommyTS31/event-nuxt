@@ -19,6 +19,7 @@
           <td class="p-2">{{ event.time }}</td>
           <td class="p-2">{{ event.title.length }}</td>
           <td class="pr-4">
+            <!-- TODO Go to edit event -->
             <button
               class="w-full text-white bg-secondary font-regular hover:bg-secondarylight text-xs rounded-sm text-center p-1"
             >
@@ -81,9 +82,7 @@
 
 <script setup>
 import { ref, onMounted, computed } from "vue";
-import { useToast } from "tailvue";
 const config = useRuntimeConfig();
-const toast = useToast();
 const pages = ref(5);
 const events = ref();
 const start = ref(0);
@@ -101,7 +100,6 @@ onMounted(async () => {
 function nextPage() {
   start.value += pages.value;
   end.value += pages.value;
-  toast.show("Bismillah");
 }
 
 function previousPage() {

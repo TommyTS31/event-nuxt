@@ -1,13 +1,15 @@
 <template>
   <div>
     <div>
-      <label class="block mb-2 font-regular">Add tags that describe your event</label>
+      <label class="block mb-2 font-semibold text-xl"
+        >Find categories that you would enjoy:</label
+      >
       <input
         type="text"
         name="title"
         v-model="tagSearch"
-        class="bg-gray-50 border border-gray-300 text-black text-md block w-full p-2.5"
-        placeholder="E.g. Videogames"
+        class="bg-gray-50 border border-gray-300 text-black text-lg block w-full p-2.5"
+        placeholder="E.g. Videogames (Select at least 3)"
         autocomplete="off"
         required
         @input="openList"
@@ -16,7 +18,7 @@
     <div class="relative" v-if="displayList" @focusout="clickOutside" tabindex="0">
       <ul class="divide-y bg-gray-50 border border-gray-300 absolute w-full shadow">
         <li
-          class="hover:bg-gray-100 p-2 text-sm"
+          class="hover:bg-gray-100 p-2 text-md"
           v-for="tag in availableTags"
           v-on:click="addTag(tag.name)"
         >
@@ -24,22 +26,22 @@
           <span
             v-if="selectedTags.includes(tag.name)"
             id="badge-dismiss-default"
-            class="inline-flex items-center px-1 py-1 ml-2 text-xs font-medium text-blue-800 bg-blue-200 rounded"
+            class="inline-flex items-center px-1 py-1 ml-2 text-sm font-medium text-blue-800 bg-blue-200 rounded"
             >Added!</span
           >
         </li>
       </ul>
     </div>
-    <div class="border border-gray-300 p-3">
+    <div class="border border-gray-300 p-3 text-md font-semibold">
       <span
         v-if="selectedTags.length === 0"
         id="badge-dismiss-default"
-        class="inline-flex items-center px-2 py-1 mr-2 text-sm font-medium text-gray-600 bg-gray-200 rounded"
+        class="inline-flex items-center px-2 py-1 mr-2 text-gray-600 bg-gray-200 rounded"
         >No tags have been selected</span
       >
       <span
         id="badge-dismiss-default"
-        class="inline-flex items-center px-2 py-1 mr-2 text-sm font-medium text-blue-800 bg-blue-100 rounded"
+        class="inline-flex items-center px-2 py-1 mr-2 text-blue-800 bg-blue-100 rounded"
         v-for="tag in selectedTags"
         v-else
       >

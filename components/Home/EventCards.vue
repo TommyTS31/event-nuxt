@@ -3,7 +3,7 @@
     <div class="container flex flex-row justify-evenly w-8/12 max-md:w-10/12 flex-wrap">
       <div
         class="max-sm:w-10/12 w-1/4 bg-white border border-gray-100 shadow text-black my-6 mx-2"
-        v-for="event in allEvents"
+        v-for="event in shownEvents"
       >
         <NuxtLink :to="'/event/' + event.id">
           <div class="h-full hover:shadow-xl">
@@ -35,13 +35,49 @@
 </template>
 
 <script setup>
-const id = useRoute().params;
+import { ref, computed, watch } from "vue";
+
 const cookie = useCookie("access_token", { httpOnly: true });
 const config = useRuntimeConfig();
+
+const prop = defineProps({ eventOption: { default: 0, type: Number } });
+const shownEvents = ref();
+
 const { data: response } = await useFetch("/events/get_all", {
   baseURL: config.baseURL,
   method: "GET",
   headers: { api_key: config.api_key },
 });
-const allEvents = response.value;
+shownEvents.value = response.value;
+
+watch(
+  () => prop.eventOption,
+  async () => {
+    console.log(prop.eventOption);
+    if (prop.eventOption === 0) {
+      const { data: response } = await useFetch("/events/get_all", {
+        baseURL: config.baseURL,
+        method: "GET",
+        headers: { api_key: config.api_key },
+      });
+      shownEvents.value = response.value;
+    }
+    if (prop.eventOption === 1) {
+      const { data: response } = await useFetch("/events/get_all", {
+        baseURL: config.baseURL,
+        method: "GET",
+        headers: { api_key: config.api_key },
+      });
+      shownEvents.value = response.value;
+    }
+    if (prop.eventOption === 2) {
+      const { data: response } = await useFetch("/events/get_all", {
+        baseURL: config.baseURL,
+        method: "GET",
+        headers: { api_key: config.api_key },
+      });
+      shownEvents.value = response.value;
+    }
+  }
+);
 </script>
