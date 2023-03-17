@@ -32,7 +32,7 @@
     <div class="flex justify-between" v-if="events.length > pages">
       <div class="text-gray-400 text-md font-semibold">
         Page {{ Math.round(start / pages) + 1 }} /
-        {{ Math.round(events.length / pages) }}
+        {{ Math.ceil(events.length / pages) }}
       </div>
       <div class="flex justify-end">
         <button
@@ -89,9 +89,9 @@ const start = ref(0);
 const end = ref(5);
 const cookie = useCookie("access_token", { httpOnly: true });
 onMounted(async () => {
-  const { data: response } = await useFetch("/events/find_all_by_user", {
+  const { data: response } = await useFetch("/events/all/user", {
     baseURL: config.baseURL,
-    method: "POST",
+    method: "GET",
     headers: { authorization: "Bearer " + cookie.value },
   });
   events.value = response.value;

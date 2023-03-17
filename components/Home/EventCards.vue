@@ -43,7 +43,7 @@ const config = useRuntimeConfig();
 const prop = defineProps({ eventOption: { default: 0, type: Number } });
 const shownEvents = ref();
 
-const { data: response } = await useFetch("/events/get_all", {
+const { data: response } = await useFetch("/events/all", {
   baseURL: config.baseURL,
   method: "GET",
   headers: { api_key: config.api_key },
@@ -55,7 +55,7 @@ watch(
   async () => {
     console.log(prop.eventOption);
     if (prop.eventOption === 0) {
-      const { data: response } = await useFetch("/events/get_all", {
+      const { data: response } = await useFetch("/events/all", {
         baseURL: config.baseURL,
         method: "GET",
         headers: { api_key: config.api_key },
@@ -63,7 +63,7 @@ watch(
       shownEvents.value = response.value;
     }
     if (prop.eventOption === 1) {
-      const { data: response } = await useFetch("/events/get_all", {
+      const { data: response } = await useFetch("/events/all", {
         baseURL: config.baseURL,
         method: "GET",
         headers: { api_key: config.api_key },
@@ -71,7 +71,7 @@ watch(
       shownEvents.value = response.value;
     }
     if (prop.eventOption === 2) {
-      const { data: response } = await useFetch("/events/get_all", {
+      const { data: response } = await useFetch("/events/all", {
         baseURL: config.baseURL,
         method: "GET",
         headers: { api_key: config.api_key },

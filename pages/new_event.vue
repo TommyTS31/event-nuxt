@@ -72,8 +72,9 @@
 </template>
 
 <script>
-import { useToast } from "tailvue";
+import { useToast, useModal } from "tailvue";
 const toast = useToast();
+const modal = useModal();
 const config = useRuntimeConfig();
 export default {
   data() {
@@ -94,14 +95,30 @@ export default {
     async createEvent() {
       const cookie = useCookie("access_token", { httpOnly: true });
       try {
-        const { data: response } = await useFetch("/events/create", {
-          baseURL: config.baseURL,
-          method: "POST",
-          headers: { authorization: "Bearer " + cookie.value },
-          body: { event: this.event, selectedTags: this.selectedTags },
+        // TODO Add modal for confirmation
+        modal.show({
+          type: "info",
+          title: "Confirm event creation",
+          body:
+            "Once you create this event people will be able to find your event, you will be able to edit and manage the event",
+          primary: {
+            label: "Create",
+            theme: "blue",
+            action: async () => {
+              const { data: response } = await useFetch("/events/", {
+                baseURL: config.baseURL,
+                method: "POST",
+                headers: { authorization: "Bearer " + cookie.value },
+                body: { event: this.event, selectedTags: this.selectedTags },
+              });
+              this.$router.push("/dashboard");
+            },
+          },
+          secondary: {
+            label: "Cancel",
+            theme: "white",
+          },
         });
-        toast.show("New event created!");
-        this.$router.push("/dashboard");
       } catch (err) {
         toast.show("Something went wrong");
       }
