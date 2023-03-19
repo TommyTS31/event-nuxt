@@ -4,6 +4,12 @@
     <div class="flex justify-center content-center mt-16">
       <div class="w-full max-w-5xl p-4 bg-white sm:p-6 md:p-8 font-sans">
         <form class="space-y-6">
+          <FormModal
+            v-if="displayModal"
+            @accept="createEvent"
+            @close-modal="displayModal = false"
+            type="info"
+          />
           <h5 class="text-5xl font-semibold text-primary">Create a new event</h5>
           <div>
             <FormSectionHeading
@@ -63,7 +69,7 @@
             />
           </div>
           <div class="pb-10 pt-8">
-            <FormSubmitButton buttonText="Create Event" v-on:click="createEvent" />
+            <FormSubmitButton buttonText="Create Event" @click="displayModal = true" />
           </div>
         </form>
       </div>
@@ -86,6 +92,7 @@ export default {
       dbTags: [],
       selectedTags: [],
       display: false,
+      displayModal: false,
     };
   },
   methods: {
