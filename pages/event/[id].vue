@@ -14,13 +14,12 @@ const cookie = useCookie("access_token", { httpOnly: true });
 const event = ref();
 const address = "/events/event=" + id;
 
-console.log(address);
 onBeforeMount(async () => {
   const { data: response } = await useFetch(address, {
     baseURL: config.baseURL,
     method: "GET",
   });
-  event.value = response.value;
+  event.value = JSON.parse(JSON.stringify(response.value));
 });
 
 async function joinEvent() {

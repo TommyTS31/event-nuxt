@@ -11,7 +11,7 @@
         <!-- TODO Add max three categories -->
         <FormTagPreferences :displayOption="false" />
         <FormSectionSeparate />
-        <FormAvailabilityCheck :inputVal="checkAv" />
+        <FormAvailabilityCheck :inputVal="checkAv" :is-valid="checkIt" />
         <button
           class="bg-secondary text-white p-3 w-full rounded-xs"
           @click="checkAndSubmit"
@@ -29,5 +29,8 @@ import { ref } from "vue";
 const checkAv = ref(false);
 function checkAndSubmit() {
   checkAv.value = true;
+}
+function checkIt(e) {
+  console.log(e);
 }
 </script>

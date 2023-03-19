@@ -37,9 +37,6 @@
 </template>
 
 <script>
-import { useToast } from "tailvue";
-const toast = useToast();
-
 export default {
   data() {
     return {
@@ -63,9 +60,7 @@ export default {
         const authCookie = useCookie("access_token");
         authCookie.value = response.value.token;
         this.$router.push("/dashboard");
-      } catch (err) {
-        toast.show("Wrong Email or Password");
-      }
+      } catch (err) {}
     },
   },
 };

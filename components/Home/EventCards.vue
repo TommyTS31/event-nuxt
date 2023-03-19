@@ -48,7 +48,7 @@ const { data: response } = await useFetch("/events/all", {
   method: "GET",
   headers: { api_key: config.api_key },
 });
-shownEvents.value = response.value;
+shownEvents.value = JSON.parse(JSON.stringify(response.value));
 
 watch(
   () => prop.eventOption,

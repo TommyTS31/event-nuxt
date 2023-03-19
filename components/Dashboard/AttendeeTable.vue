@@ -94,7 +94,7 @@ onMounted(async () => {
     method: "GET",
     headers: { authorization: "Bearer " + cookie.value },
   });
-  attendees.value = response.value;
+  attendees.value = JSON.parse(JSON.stringify(response.value));
 });
 
 function nextPage() {

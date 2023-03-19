@@ -14,7 +14,7 @@
         aria-controls="navbar-dropdown"
         aria-expanded="false"
       >
-        <span class="sr-only">Open main menu</span>
+        <span>Open main menu</span>
         <svg
           class="w-6 h-6"
           aria-hidden="true"
