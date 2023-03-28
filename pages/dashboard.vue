@@ -55,7 +55,6 @@ onMounted(async () => {
     method: "GET",
     headers: { authorization: "Bearer " + cookie.value },
   });
-  console.log(response.value);
   dashboardStats.value = response.value;
 });
 </script>
