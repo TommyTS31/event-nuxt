@@ -79,7 +79,9 @@ export default {
         method: "POST",
         body: { user: this.user },
       });
-      this.$router.push("/login");
+      const authCookie = useCookie("access_token");
+      authCookie.value = response.value.token;
+      this.$router.push("/your_preferences");
     },
   },
 };

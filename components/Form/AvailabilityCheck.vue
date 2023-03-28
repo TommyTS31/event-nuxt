@@ -58,31 +58,31 @@
 import { ref, watch } from "vue";
 
 const prop = defineProps({ inputVal: { default: false, type: Boolean } });
-const emit = defineEmits(["isValid"]);
+const emit = defineEmits(["isValid", "setSelected"]);
 const valid = ref(true);
-const is_weekend = ref(false);
-const is_weekday = ref(false);
-const is_morning = ref(false);
-const is_afternoon = ref(false);
-const is_evening = ref(false);
-const availability = ref({});
+const availability = ref({
+  is_weekend: false,
+  is_weekday: false,
+  is_morning: false,
+  is_afternoon: false,
+  is_evening: false,
+});
 
-watch(
-  () => prop.inputVal,
-  async () => {
-    if (!availability.value.is_weekend && !availability.value.is_weekday) {
-      valid.value = false;
-      console.log("pass1");
-      emit("isValid", true);
-    }
-    if (
-      !availability.value.is_morning &&
-      !availability.value.is_afternoon &&
-      !availability.value.is_evening
-    ) {
-      console.log("pass2");
-      valid.value = false;
-    }
+watch(availability.value, () => {
+  if (!availability.value.is_weekend && !availability.value.is_weekday) {
+    valid.value = false;
+    emit("isValid", false);
+  } else if (
+    !availability.value.is_morning &&
+    !availability.value.is_afternoon &&
+    !availability.value.is_evening
+  ) {
+    emit("isValid", false);
+    valid.value = false;
+  } else {
+    emit("isValid", true);
+    emit("setSelected", availability.value);
+    valid.value = true;
   }
-);
+});
 </script>

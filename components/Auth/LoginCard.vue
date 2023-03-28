@@ -56,7 +56,6 @@ export default {
           method: "POST",
           body: { user: this.user },
         });
-        console.log(response.value);
         const authCookie = useCookie("access_token");
         authCookie.value = response.value.token;
         this.$router.push("/dashboard");

@@ -69,7 +69,7 @@
             />
           </div>
           <div class="pb-10 pt-8">
-            <FormSubmitButton buttonText="Create Event" @click="displayModal = true" />
+            <FormSubmitButton buttonText="Create Event" @click="openModal" />
           </div>
         </form>
       </div>
@@ -107,13 +107,12 @@ export default {
           selectedTags: JSON.stringify(this.selectedTags),
         },
       });
-      toast.show({
-        type: "success",
-        message: "Event successfully created",
-      });
       this.$router.push("/dashboard");
     },
 
+    openModal() {
+      this.displayModal = true;
+    },
     removeTag(tag) {
       const index = this.tags.indexOf(tag);
       this.tags.splice(index, 1);

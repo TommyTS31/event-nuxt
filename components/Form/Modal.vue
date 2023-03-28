@@ -9,7 +9,9 @@
         <div
           class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600"
         >
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{{ title }}</h3>
+          <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">
+            {{ title }}
+          </h3>
           <button
             type="button"
             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
@@ -33,7 +35,7 @@
         </div>
         <!-- Modal body -->
         <div class="p-6 space-y-6">
-          <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+          <p class="text-lg leading-relaxed text-gray-500 dark:text-gray-400">
             {{ description }}
           </p>
         </div>
@@ -52,7 +54,7 @@
             type="button"
             @click="$emit('accept')"
             v-if="type === 'info'"
-            class="text-white bg-secondary hover:bg-secondarylight font-semibold rounded-sm text-sm px-5 py-2.5 text-center"
+            class="text-white bg-secondary hover:bg-secondarylight font-semibold rounded-sm text-md px-5 py-2.5 text-center"
           >
             {{ primary }}
           </button>
@@ -60,7 +62,7 @@
             type="button"
             v-if="type === 'danger'"
             @click="$emit('accept')"
-            class="text-white bg-red-600 hover:bg-red-800 font-semibold rounded-sm text-sm px-5 py-2.5 text-center"
+            class="text-white bg-red-600 hover:bg-red-800 font-semibold rounded-sm text-md px-5 py-2.5 text-center"
           >
             {{ primary }}
           </button>
