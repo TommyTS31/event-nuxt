@@ -1,6 +1,8 @@
 # Nuxt and Tailwind Event Management
-
-Repository for Event Management Website
+<div style="flex" align="center">
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Nuxt_logo.svg" width="200" height="200">
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" width="200" height="200">
+</div>
 
 ## Installation
 
