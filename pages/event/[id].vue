@@ -14,6 +14,10 @@ const cookie = useCookie("access_token", { httpOnly: true });
 const event = ref();
 const address = "/events/event=" + id;
 
+useHead({
+  title: "OnEvent | Event " + id,
+});
+
 onBeforeMount(async () => {
   const { data: response } = await useFetch(address, {
     baseURL: config.baseURL,

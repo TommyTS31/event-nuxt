@@ -2,7 +2,9 @@
   <div>
     <NavigationTopBar />
     <div class="flex justify-center content-center mt-16">
-      <div class="w-full max-w-5xl p-4 bg-white sm:p-6 md:p-8 font-sans space-y-6">
+      <div
+        class="w-full max-w-5xl p-4 bg-white sm:p-6 md:p-8 font-sans space-y-6"
+      >
         <FormModal
           v-if="openModal"
           @close-modal="openModal = false"
@@ -16,7 +18,10 @@
           note="Here you can choose what type of events you will attend and your average vailability so that we are able to find events more suited to your lifestyle!"
         />
         <!-- TODO Add max three categories -->
-        <FormTagPreferences :displayOption="false" @selected-change="setSelectedTags" />
+        <FormTagPreferences
+          :displayOption="false"
+          @selected-change="setSelectedTags"
+        />
         <p v-if="!tagValid" class="text-rose-600 font-semibold text-sm">
           *Choose at least one of the week and day options
         </p>
@@ -50,6 +55,10 @@ const availabilityValid = ref(false);
 const tagValid = ref(true);
 const availability = ref();
 const tags = ref([]);
+
+useHead({
+  title: "OnEvent | Preferences",
+});
 
 async function checkAndSubmit() {
   if (tags.value.length < 3) {

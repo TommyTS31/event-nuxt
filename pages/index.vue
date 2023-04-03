@@ -17,7 +17,9 @@
           placeholder="E.g. Indie Rock"
           required
         />
-        <button class="bg-secondary text-white px-10 max-md:px-3 max-md:text-sm">
+        <button
+          class="bg-secondary text-white px-10 max-md:px-3 max-md:text-sm"
+        >
           Search
         </button>
       </div>
@@ -29,5 +31,8 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+useHead({
+  title: "OnEvent | Home",
+});
 const eventType = ref(0);
 </script>

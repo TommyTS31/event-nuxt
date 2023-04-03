@@ -7,6 +7,10 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+useHead({
+  title: "OnEvent | Sign Up",
+});
+</script>
 
 <style scoped></style>

@@ -49,6 +49,10 @@ import { ref, onMounted, onBeforeMount } from "vue";
 const config = useRuntimeConfig();
 const dashboardStats = ref();
 const cookie = useCookie("access_token", { httpOnly: true });
+useHead({
+  title: "OnEvent | Dashboard",
+});
+
 onMounted(async () => {
   const { data: response } = await useFetch("/analytics/dashboard_statistics", {
     baseURL: config.baseURL,

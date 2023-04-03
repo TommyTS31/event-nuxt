@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
       public: {
         api_key: process.env.DEFAULT_API_KEY,
-        baseURL: "http://localhost:5000"
+        baseURL: process.env.API_URL || "http://localhost:5000"
       }
     }
 })

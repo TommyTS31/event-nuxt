@@ -11,10 +11,10 @@
           />
           <FormSectionSeparate />
           <p class="text-lg text-justify mb-2">
-            If you haven't generated a key you can generate a new key by clicking the
-            'generate' button below. You will only get to view your API key once, so make
-            sure to save the API key. If you forget the key you will have to generate a
-            new key.
+            If you haven't generated a key you can generate a new key by
+            clicking the 'generate' button below. You will only get to view your
+            API key once, so make sure to save the API key. If you forget the
+            key you will have to generate a new key.
           </p>
           <FormSectionSeparate />
           <p class="text-lg text-justify">You will be able to access:</p>
@@ -49,6 +49,10 @@ const cookie = useCookie("access_token", { httpOnly: true });
 const fetchedKey = ref();
 const generated = ref(false);
 const config = useRuntimeConfig();
+
+useHead({
+  title: "OnEvent | Get API Key",
+});
 
 async function generateKey() {
   const { data: response } = await useFetch("/api/generate_api_key", {

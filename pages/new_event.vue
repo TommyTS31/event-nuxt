@@ -10,7 +10,9 @@
             @close-modal="displayModal = false"
             type="info"
           />
-          <h5 class="text-5xl font-semibold text-primary">Create a new event</h5>
+          <h5 class="text-5xl font-semibold text-primary">
+            Create a new event
+          </h5>
           <div>
             <FormSectionHeading
               heading="Basic Details"
@@ -31,7 +33,10 @@
               wordLimit="300"
             />
             <div class="mt-6">
-              <FormTagSearch :displayOption="display" @selected-change="setSelected" />
+              <FormTagSearch
+                :displayOption="display"
+                @selected-change="setSelected"
+              />
             </div>
           </div>
           <FormSectionSeparate />
@@ -125,7 +130,6 @@ export default {
     },
     clickedOutside() {
       this.display = false;
-      console.log("clicked");
     },
     setSelected(s) {
       this.selectedTags = s;
