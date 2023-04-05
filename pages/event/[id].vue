@@ -3,6 +3,7 @@
     <NavigationTopBar />
     <!-- TODO User guard, if registered or is creator, don't join -->
     <EventDisplay />
+    <HomeFooter />
   </div>
 </template>
 
@@ -15,7 +16,7 @@ const event = ref();
 const address = "/events/event=" + id;
 
 useHead({
-  title: "OnEvent | Event " + id,
+  title: "OnEvent | View Event",
 });
 
 onBeforeMount(async () => {

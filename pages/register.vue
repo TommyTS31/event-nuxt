@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div class="flex flex-col min-h-screen">
     <NavigationTopBar />
     <div class="flex justify-center content-center mt-16">
       <AuthRegisterCard />
     </div>
+    <HomeFooter />
   </div>
 </template>
 

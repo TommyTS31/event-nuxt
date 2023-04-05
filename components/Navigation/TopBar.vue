@@ -1,9 +1,9 @@
 <template>
-  <nav class="bg-white px-2 w-full z-20 top-0 left-0 border-b border-gray-100">
+  <nav class="bg-white w-full z-20 top-0 left-0 border-b border-gray-100">
     <div class="container flex flex-wrap items-center justify-between mx-auto">
       <NuxtLink to="/" class="flex items-center p-4">
         <span
-          class="self-center text-3xl font-serif whitespace-nowrap text-primary font-bold"
+          class="self-center text-3xl font-serif whitespace-nowrap text-primary font-bold hover:text-primarylight hover:scale-105 transition"
           >OnEvent</span
         >
       </NuxtLink>
@@ -36,7 +36,7 @@
           <li>
             <NuxtLink
               to="/"
-              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
+              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold hover:scale-105 transition"
               aria-current="page"
               >Home</NuxtLink
             >
@@ -44,7 +44,7 @@
           <li>
             <NuxtLink
               to="#"
-              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
+              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold hover:scale-105 transition"
               aria-current="page"
               >Search</NuxtLink
             >
@@ -52,7 +52,7 @@
           <li v-if="!isLoggedIn">
             <NuxtLink
               to="/login"
-              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
+              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold hover:scale-105 transition"
               aria-current="page"
               >Sign In</NuxtLink
             >
@@ -60,7 +60,7 @@
           <li v-if="!isLoggedIn">
             <NuxtLink
               to="/register"
-              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
+              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold hover:scale-105 transition"
               aria-current="page"
               >Sign Up</NuxtLink
             >
@@ -68,7 +68,7 @@
           <li v-if="isLoggedIn">
             <NuxtLink
               to="/dashboard"
-              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
+              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold hover:scale-105 transition"
               aria-current="page"
               >Dashboard</NuxtLink
             >
@@ -76,7 +76,7 @@
           <li v-if="isLoggedIn">
             <NuxtLink
               to="/dashboard"
-              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
+              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold hover:scale-105 transition"
               aria-current="page"
               >Profile</NuxtLink
             >
@@ -84,7 +84,7 @@
           <li v-if="isLoggedIn">
             <button
               @click="logout"
-              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
+              class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold hover:scale-105 transition"
             >
               Sign Out
             </button>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-col min-h-screen">
     <NavigationTopBar />
     <div class="flex justify-center content-center mt-16">
       <div
@@ -39,6 +39,7 @@
         </button>
       </div>
     </div>
+    <HomeFooter />
   </div>
 </template>
 
@@ -77,7 +78,7 @@ async function checkAndSubmit() {
           availability: availability.value,
         },
       });
-      router.push("/dashboard");
+      router.push("/login");
     } catch (err) {
       console.log(err);
     }

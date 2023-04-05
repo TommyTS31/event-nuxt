@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-col min-h-screen">
     <NavigationTopBar />
     <div>
       <img
@@ -26,6 +26,7 @@
     </div>
     <HomeNavigationTabs @event-option="(e) => (eventType = e)" />
     <HomeEventCards :eventOption="eventType" />
+    <HomeFooter />
   </div>
 </template>
 

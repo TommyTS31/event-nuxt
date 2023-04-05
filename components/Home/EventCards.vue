@@ -1,15 +1,31 @@
 <template>
   <div class="w-full flex justify-center">
-    <div class="container flex flex-row justify-evenly w-8/12 max-md:w-10/12 flex-wrap">
+    <div
+      class="flex justify center flex-col"
+      v-if="eventOption === 1 && !user_verification.logged"
+    >
+      <h1 class="text-3xl my-5">Sign in to view your recommendations!</h1>
+      <NuxtLink to="/login">
+        <button
+          class="bg-secondary text-white text-lg p-2.5 rounded shadow font-semibold hover:scale-105 hover:bg-secondarylight transition w-full"
+        >
+          Sign in
+        </button>
+      </NuxtLink>
+    </div>
+    <div
+      class="container flex flex-row justify-evenly w-8/12 max-md:w-10/12 flex-wrap"
+      v-else
+    >
       <div
-        class="max-sm:w-10/12 w-1/4 bg-white border border-gray-100 shadow text-black my-6 mx-2"
+        class="max-sm:w-10/12 w-1/4 bg-gray-50 border border-gray-100 shadow text-black my-6 mx-2 hover:shadow-xl delay-50 hover:scale-105 transition"
         v-for="event in shownEvents"
       >
         <NuxtLink :to="'/event/' + event.id">
-          <div class="h-full hover:shadow-xl">
+          <div class="h-full">
             <img
               class="w-full h-1/2 object-cover"
-              src="../../assets/images/homepage2.jpg"
+              src="../../assets/images/homepage5.jpg"
               alt="event"
             />
             <div class="p-3">
@@ -36,12 +52,14 @@
 
 <script setup>
 import { ref, computed, watch } from "vue";
+import { is_user_logged_in } from "~~/middleware/auth.global";
 
 const cookie = useCookie("access_token", { httpOnly: true });
 const config = useRuntimeConfig();
 
 const prop = defineProps({ eventOption: { default: 0, type: Number } });
 const shownEvents = ref();
+const user_verification = await is_user_logged_in();
 
 const { data: response } = await useFetch("/events/all", {
   baseURL: config.baseURL,
@@ -63,12 +81,17 @@ watch(
       shownEvents.value = response.value;
     }
     if (prop.eventOption === 1) {
-      const { data: response } = await useFetch("/events/all", {
-        baseURL: config.baseURL,
-        method: "GET",
-        headers: { api_key: config.api_key },
-      });
-      shownEvents.value = response.value;
+      if (user_verification.logged) {
+        const { data: response } = await useFetch(
+          "/events/recommendation/user=" + String(user_verification.user.id),
+          {
+            baseURL: config.baseURL,
+            method: "GET",
+            headers: { authorization: "Bearer " + cookie.value },
+          }
+        );
+        shownEvents.value = response.value.events;
+      }
     }
     if (prop.eventOption === 2) {
       const { data: response } = await useFetch("/events/all", {

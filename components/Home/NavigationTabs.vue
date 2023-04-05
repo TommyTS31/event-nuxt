@@ -1,6 +1,6 @@
 <template>
   <div
-    class="pb-6 text-sm font-medium text-center text-gray-500 border-gray-200 flex justify-center"
+    class="pb-6 text-md font-semibold text-center text-gray-500 border-gray-200 flex justify-center"
   >
     <ul class="flex flex-wrap -mb-px">
       <li class="mr-2" v-if="currentPage === 0">
