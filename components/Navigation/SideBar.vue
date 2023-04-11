@@ -7,7 +7,7 @@
     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50">
       <NuxtLink to="/" class="flex items-center p-4">
         <span
-          class="self-center text-4xl font-serif whitespace-nowrap text-primary font-bold"
+          class="self-center text-4xl font-serif whitespace-nowrap text-primary-400 font-bold"
           >OnEvent</span
         >
       </NuxtLink>

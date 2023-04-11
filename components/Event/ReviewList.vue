@@ -81,11 +81,8 @@ const reviews = ref([]);
 function findReviewIfExists(user_id) {
   for (let i = 0; i < reviews.value.length; i++) {
     const review = reviews.value[i];
-    console.log(review);
-    console.log(user_verification.user.id);
     if (String(review.user_id) === String(user_id)) {
       reviews.value.splice(i, 1);
-      console.log("pass");
       return true;
     }
   }

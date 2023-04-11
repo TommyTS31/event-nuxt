@@ -1,9 +1,11 @@
 <template>
-  <nav class="bg-white w-full z-20 top-0 left-0 border-b border-gray-100">
+  <nav
+    class="bg-white w-full z-20 top-0 left-0 border-b border-gray-100 shadow-sm"
+  >
     <div class="container flex flex-wrap items-center justify-between mx-auto">
       <NuxtLink to="/" class="flex items-center p-4">
         <span
-          class="self-center text-3xl font-serif whitespace-nowrap text-primary font-bold hover:text-primarylight hover:scale-105 transition"
+          class="self-center text-3xl font-serif whitespace-nowrap text-primary-400 font-bold hover:text-primary-100 hover:scale-105 transition"
           >OnEvent</span
         >
       </NuxtLink>
@@ -43,7 +45,7 @@
           </li>
           <li>
             <NuxtLink
-              to="#"
+              to="/search"
               class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold hover:scale-105 transition"
               aria-current="page"
               >Search</NuxtLink

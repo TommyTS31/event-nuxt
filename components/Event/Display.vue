@@ -3,8 +3,13 @@
     <div
       class="w-full max-w-7xl p-4 bg-white border-gray-200 sm:p-6 md:p-8 font-sans"
     >
-      <div class="w-full h-80 overflow-hidden">
-        <img src="../../assets/images/homepage1.jpg" alt="" />
+      <div class="w-full overflow-hidden">
+        <img
+          src="../../assets/images/homepage6.jpg"
+          class="h-80 object object-cover w-full"
+          style="object-position: 50% 70%"
+          alt=""
+        />
       </div>
       <div class="flex flex-row mt-6 md:justify-between h-fit max-md:flex-col">
         <div class="w-4/5 zmr-6 max-md:w-full">

@@ -1,6 +1,8 @@
 <template>
   <div>
-    <label class="block py-3 text-sm font-regular text-black">{{ label }}</label>
+    <label class="block py-3 text-md font-semibold text-black">{{
+      label
+    }}</label>
     <div v-if="inputType === 'multi-text'">
       <textarea
         type="text"

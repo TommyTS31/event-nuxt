@@ -12,10 +12,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#A17A66",
+        primary: {
+          100: "#eabfa9",
+          400: "#A17A66",
+          600: "#795542",
+        },
         secondary: "#65748a",
         secondarylight: "#687d9c",
-        primarylight: "#bf9c8a",
+        primarylight: "#a67f6c",
       },
       fontFamily: {
         sans: ["Source Sans Pro", "Public Sans", "sans-serif"],

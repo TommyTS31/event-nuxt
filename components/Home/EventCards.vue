@@ -7,7 +7,7 @@
       <h1 class="text-3xl my-5">Sign in to view your recommendations!</h1>
       <NuxtLink to="/login">
         <button
-          class="bg-secondary text-white text-lg p-2.5 rounded shadow font-semibold hover:scale-105 hover:bg-secondarylight transition w-full"
+          class="bg-secondary text-white text-lg p-2.5 rounded shadow font-semibold hover:scale-105 hover:bg-secondarylight transition duration-200 w-full"
         >
           Sign in
         </button>

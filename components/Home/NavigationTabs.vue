@@ -5,7 +5,7 @@
     <ul class="flex flex-wrap -mb-px">
       <li class="mr-2" v-if="currentPage === 0">
         <button
-          class="inline-block p-4 text-primary border-b-2 border-primary rounded-t-lg"
+          class="inline-block p-4 text-primary-400 border-b-2 border-primary-400 rounded-t-lg"
         >
           Popular
         </button>
@@ -23,7 +23,7 @@
       </li>
       <li class="mr-2" v-if="currentPage === 1">
         <button
-          class="inline-block p-4 text-primary border-b-2 border-primary rounded-t-lg"
+          class="inline-block p-4 text-primary-400 border-b-2 border-primary-400 rounded-t-lg"
         >
           Recommended
         </button>
@@ -41,7 +41,7 @@
       </li>
       <li class="mr-2" v-if="currentPage === 2">
         <button
-          class="inline-block p-4 text-primary border-b-2 border-primary rounded-t-lg"
+          class="inline-block p-4 text-primary-400 border-b-2 border-primary-400 rounded-t-lg"
         >
           Near me
         </button>

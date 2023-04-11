@@ -13,7 +13,7 @@
         >
           <svg
             aria-hidden="true"
-            class="w-8 text-primarylight"
+            class="w-8 text-primary-100"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,7 @@
           </svg>
           <svg
             aria-hidden="true"
-            class="w-8 text-gray-300 hover:text-primary"
+            class="w-8 text-gray-300 hover:text-primary-400"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"

@@ -3,7 +3,7 @@
     <NavigationSideBar />
     <div class="flex justify-center content-center mt-16">
       <div class="w-5/12 p-6 space-y-6">
-        <h5 class="text-5xl font-semibold text-primary">Manage Access</h5>
+        <h5 class="text-5xl font-semibold text-primary-400">Manage Access</h5>
         <div>
           <FormSectionHeading
             heading="Generate An API Key"

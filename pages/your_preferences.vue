@@ -12,7 +12,7 @@
           title="Set Preferences"
           description="Are you sure you want to set these preferences, you can change these later on and we will use these to give you more personalised event recommendations."
         />
-        <h5 class="text-5xl font-semibold text-primary">Preferences</h5>
+        <h5 class="text-5xl font-semibold text-primary-400">Preferences</h5>
         <FormSectionHeading
           heading="Let us know what your preferences are!"
           note="Here you can choose what type of events you will attend and your average vailability so that we are able to find events more suited to your lifestyle!"
