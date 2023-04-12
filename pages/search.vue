@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col min-h-screen">
     <NavigationTopBar />
-    <div class="flex justify-center content-center mt-16 h-full">
-      <div class="w-1/4 mx-6">
+    <div class="md:flex justify-center content-center mt-16 h-full">
+      <div class="md:w-1/4 md:mx-6 mx-6">
         <input
           type="text"
           class="bg-gray-100 text-black text-lg w-full p-2.5"
@@ -20,7 +20,7 @@
         <SearchTagFilter @send-tags="(n) => (filterTags = n)" />
       </div>
       <!-- Event cards -->
-      <div class="w-6/12 border-l">
+      <div class="md:w-6/12 md:border-l">
         <p v-if="!searchQuery" class="text-gray-400 text-md pl-6 pb-3">
           Showing most recent events
         </p>

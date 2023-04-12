@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="foundEvents.length > 0"
-    class="bg-gray-50 border shadow text-gray-700 mb-8 rounded-lg ml-6 hover:bg-white transition hover:scale-105 duration-300"
+    class="bg-gray-50 border shadow text-gray-700 mb-8 rounded-lg md:ml-6 mx-6 hover:bg-white transition hover:scale-105 duration-300"
     v-for="event in foundEvents"
   >
     <NuxtLink :to="'/event/' + event.id">
