@@ -1,12 +1,14 @@
 <template>
   <div v-if="events">
-    <table class="w-full text-lg text-left text-gray-500 shadow rounded-sm my-3">
+    <table
+      class="w-full text-lg md:text-left text-center text-gray-500 shadow rounded-sm my-3"
+    >
       <thead class="text-xl text-gray-700 uppercase bg-gray-50">
         <tr>
           <th class="p-2">ID</th>
           <th class="p-2">Title</th>
           <th class="p-2">Date</th>
-          <th class="p-2">Time</th>
+          <th class="p-2 max-md:hidden">Time</th>
           <th class="p-2">Attendees</th>
           <th></th>
         </tr>
@@ -16,7 +18,7 @@
           <th class="p-2">{{ event.id }}</th>
           <td class="p-2">{{ event.title }}</td>
           <td class="p-2">{{ event.date }}</td>
-          <td class="p-2">{{ event.time }}</td>
+          <td class="p-2 max-md:hidden">{{ event.time }}</td>
           <td class="p-2">{{ event.title.length }}</td>
           <td class="pr-4">
             <!-- TODO Go to edit event -->

@@ -1,28 +1,31 @@
 <template>
   <div>
     <NavigationSideBar />
-    <div class="flex justify-center content-center">
-      <div class="flex justify-center content-center mt-16 flex-col w-7/12">
+    <div class="flex md:justify-center content-center">
+      <div class="flex justify-center content-center mt-16 flex-col md:w-7/12">
         <!-- Data Cards -->
         <!-- normal=blue, danger=red, good=green, warning=yellow, notif=purple -->
-        <div class="flex space-x-4" v-if="dashboardStats">
+        <div
+          class="md:flex md:space-x-4 max-md:space-y-4 max-md:justify-items-center"
+          v-if="dashboardStats"
+        >
           <DashboardDataCard
-            dataType="Total"
+            dataType="Total Events"
             :computedData="dashboardStats.all"
             iconType="good"
           />
           <DashboardDataCard
-            dataType="Active"
+            dataType="Active Events"
             :computedData="dashboardStats.current"
             iconType="normal"
           />
           <DashboardDataCard
-            dataType="Expired"
+            dataType="Expired Events"
             :computedData="dashboardStats.expired"
             iconType="danger"
           />
           <DashboardDataCard
-            dataType="Participants"
+            dataType="Total Participants"
             :computedData="dashboardStats.attendees"
             iconType="warning"
           />

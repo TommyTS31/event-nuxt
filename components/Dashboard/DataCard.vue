@@ -1,13 +1,19 @@
 <template>
   <div
-    class="w-1/4 bg-white border border-gray-200 shadow sm:p-1 md:p-5 font-sans rounded-sm"
+    class="md:w-1/4 bg-white border border-gray-200 shadow md:p-2 font-sans rounded max-md:w-11/12"
   >
-    <div class="flex">
+    <div class="flex justify-between">
+      <div class="flex flex-col ml-4">
+        <p class="text-lg font-regular text-gray-400 font-regular pb-2">
+          {{ dataType }}
+        </p>
+        <p class="text-3xl max-md:text-2xl font-regular">{{ computedData }}</p>
+      </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="currentColor"
-        class="h-24 w-24 bg-blue-100 text-blue-300 rounded-lg p-1"
+        class="md:h-10 md:w-10 bg-blue-100 text-blue-300 rounded-lg p-1 h-10"
         v-if="iconType === 'normal'"
       >
         <path
@@ -20,7 +26,7 @@
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="currentColor"
-        class="h-24 w-24 bg-red-100 text-red-300 rounded-lg p-1"
+        class="md:h-10 md:w-10 bg-red-100 text-red-300 rounded-lg p-1 h-10"
         v-if="iconType === 'danger'"
       >
         <path
@@ -33,7 +39,7 @@
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="currentColor"
-        class="h-24 w-24 bg-green-100 text-green-300 rounded-lg p-1"
+        class="md:h-10 md:w-10 bg-green-100 text-green-300 rounded-lg p-1 h-10"
         v-if="iconType === 'good'"
       >
         <path
@@ -44,7 +50,7 @@
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="currentColor"
-        class="h-24 w-24 bg-yellow-100 text-yellow-300 rounded-lg p-1"
+        class="md:h-10 md:w-10 bg-yellow-100 text-yellow-300 rounded-lg p-1 h-10"
         v-if="iconType === 'warning'"
       >
         <path
@@ -53,11 +59,6 @@
           clip-rule="evenodd"
         />
       </svg>
-
-      <div class="flex flex-col ml-4">
-        <p class="text-lg font-regular text-gray-400">{{ dataType }}</p>
-        <p class="text-6xl">{{ computedData }}</p>
-      </div>
     </div>
   </div>
 </template>
