@@ -78,7 +78,7 @@ async function checkAndSubmit() {
           availability: availability.value,
         },
       });
-      router.push("/login");
+      router.push("/");
     } catch (err) {
       console.log(err);
     }

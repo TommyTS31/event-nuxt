@@ -55,28 +55,30 @@
               <dd class="text-md font-semibold">{{ event.location }}</dd>
             </div>
           </dl>
-          <div v-if="!user_verification.user">
+          <div v-if="user_verification">
             <FormSubmitButton
               class="mt-16"
               buttonText="Join Event"
               type="secondary"
-              v-if="user_verification.logged"
+              v-if="user_verification.user.id != event.creator_id"
               @click="joinEvent"
             />
-            <NuxtLink v-else="user_verification.logged" to="/login">
+            <NuxtLink v-else to="/dashboard">
+              <FormSubmitButton
+                class="mt-16"
+                buttonText="Manage Event"
+                type="secondary"
+              />
+            </NuxtLink>
+          </div>
+          <div v-else>
+            <NuxtLink to="/login">
               <FormSubmitButton
                 class="mt-16"
                 buttonText="Log In to join"
                 type="secondary"
               />
             </NuxtLink>
-          </div>
-          <div v-else>
-            <FormSubmitButton
-              class="mt-16"
-              buttonText="Manage Event"
-              type="secondary"
-            />
           </div>
         </div>
       </div>

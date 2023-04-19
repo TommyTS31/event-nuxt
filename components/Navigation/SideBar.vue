@@ -83,7 +83,7 @@
         </li>
         <li>
           <NuxtLink
-            href="#"
+            href="/analytics"
             class="flex items-center p-2 text-base font-normal text-black hover:bg-gray-200"
           >
             <svg

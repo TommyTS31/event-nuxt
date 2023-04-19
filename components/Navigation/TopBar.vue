@@ -75,7 +75,7 @@
           </li>
           <li v-if="isLoggedIn">
             <NuxtLink
-              to="/dashboard"
+              to="/profile"
               class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold hover:scale-105 transition"
               aria-current="page"
               >Profile</NuxtLink
@@ -138,7 +138,7 @@
         </li>
         <li v-if="isLoggedIn">
           <NuxtLink
-            to="/dashboard"
+            to="/profile"
             class="block py-2 pl-3 pr-4 text-base text-gray-500 hover:text-black font-semibold"
             aria-current="page"
             >Profile</NuxtLink

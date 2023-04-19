@@ -46,7 +46,7 @@
         </div>
       </button>
     </div> -->
-    <div class="p-2 my-3 border border-red-200 rounded flex">
+    <div class="p-2 my-3 border border-red-200 rounded flex bg-red-100">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -68,16 +68,47 @@
         own judgement when applying these settings.
       </p>
     </div>
-    <div class="mt-1 text-xl font-semibold">
-      <h5>Title Recommendation</h5>
-      <h5>Date Recommendation</h5>
-      <h5>Time Recommendation</h5>
+    <div>
+      <h5 class="mt-1 text-xl font-semibold">Title Recommendation</h5>
+      <p>
+        Your title
+        <b>Chess GM Meetup for Beginners and Advanced individuals</b> is longer
+        than the average event title. Make sure to mention main related tags in
+        your title
+      </p>
+      <h5 class="mt-1 text-xl font-semibold">Date & Time Recommendation</h5>
+      <p>
+        For
+        <b>Monday 17:00</b> our model predicts a <b>78%</b> success rate. This
+        is very good, however some options could be to move the event to a lter
+        time. <b>18:00</b> for a potential <b>86%</b> success rate.
+      </p>
+      {{ date }}
+      {{ time }}
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
+const config = useRuntimeConfig();
+const props = defineProps({ date: String, time: String });
 
-const disclaimer = ref(false);
+watch(
+  () => [props.date, props.time],
+  async () => {
+    if (!props.date || !props.time) {
+    } else {
+      const { data: response } = await useFetch("/assistant/modeltest", {
+        baseURL: config.baseURL,
+        method: "POST",
+        body: {
+          date: props.date,
+          time: props.time,
+        },
+      });
+      console.log(response.value);
+    }
+  }
+);
 </script>
