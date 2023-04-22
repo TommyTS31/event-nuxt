@@ -99,14 +99,21 @@ const cookie = useCookie("access_token", { httpOnly: true });
 const event = ref();
 const user_verification = await is_user_logged_in();
 
-onMounted(async () => {
-  const { data: response } = await useFetch("/events/event=" + id, {
-    baseURL: config.baseURL,
-    method: "GET",
-    headers: { api_key: config.api_key },
-  });
-  event.value = response.value;
+const { data: response } = await useFetch("/events/event=" + id, {
+  baseURL: config.baseURL,
+  method: "GET",
+  headers: { api_key: config.api_key },
 });
+event.value = response.value;
+
+// onMounted(async () => {
+//   const { data: response } = await useFetch("/events/event=" + id, {
+//     baseURL: config.baseURL,
+//     method: "GET",
+//     headers: { api_key: config.api_key },
+//   });
+//   event.value = response.value;
+// });
 
 async function joinEvent() {
   const { data: response } = await useFetch(
@@ -117,6 +124,5 @@ async function joinEvent() {
       body: { event_id: parseInt(id.id) },
     }
   );
-  console.log(response.value);
 }
 </script>

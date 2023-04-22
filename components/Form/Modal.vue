@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed flex justify-center content-center place-content-center inset-y-0 w-full p-4 md:inset-0 md:h-full bg-gray-200 bg-opacity-50"
+    class="fixed flex justify-center content-center place-content-center inset-y-0 w-full p-4 md:inset-0 md:h-full bg-gray-200 bg-opacity-50 pt-48"
   >
     <div class="relative w-full h-full max-w-2xl md:h-auto">
       <!-- Modal content -->

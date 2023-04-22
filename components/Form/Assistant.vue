@@ -1,5 +1,5 @@
 <template>
-  <div class="border border-gray-300 rounded-md p-5">
+  <div class="border border-gray-300 rounded-md py-6 px-5 my-6 h-96">
     <div class="flex">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -22,30 +22,6 @@
       </svg>
       <div class="mt-1 ml-3 text-2xl font-semibold">Optimal Settings</div>
     </div>
-    <!-- <div class="mt-3">
-      <button
-        class="bg-red-500 p-1 rounded shadow text-white text-sm"
-        @click="disclaimer = true"
-      >
-        <div class="flex">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6 text-white self-center"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
-            />
-          </svg>
-          <p class="pt-0.5 pl-0.5">Disclaimer</p>
-        </div>
-      </button>
-    </div> -->
     <div class="p-2 my-3 border border-red-200 rounded flex bg-red-100">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -69,22 +45,66 @@
       </p>
     </div>
     <div>
-      <h5 class="mt-1 text-xl font-semibold">Title Recommendation</h5>
-      <p>
-        Your title
-        <b>Chess GM Meetup for Beginners and Advanced individuals</b> is longer
-        than the average event title. Make sure to mention main related tags in
-        your title
+      <h5 class="mt-2 text-xl font-semibold">Recommended Tags</h5>
+      <p v-if="title.length > 1 && foundTags.length > 0" class="text-lg">
+        Based on the title you have written, we recommend that you add the
+        following tags help people identify your event:
       </p>
-      <h5 class="mt-1 text-xl font-semibold">Date & Time Recommendation</h5>
+      <p v-if="title.length < 1" class="text-lg">
+        Please enter a suitable title so that we can give you suggestions
+      </p>
+      <p
+        v-if="
+          title.length > 1 && foundTags.length === 0 && updatedTags.length === 0
+        "
+        class="text-lg"
+      >
+        Sorry but we couldn't extract any (more) tags from your title that are
+        present in our system. Please use the search function to find suitable
+        tags.
+      </p>
+      <div class="my-3">
+        <span
+          id="badge-dismiss-default"
+          class="inline-flex items-center px-2 py-1 mr-2 text-md font-medium text-blue-800 bg-blue-100 rounded"
+          v-for="tag in foundTags"
+        >
+          {{ tag }}
+          <button
+            type="button"
+            @click="addTag(tag)"
+            class="inline-flex items-center p-0.5 ml-2 text-sm text-blue-400 bg-transparent rounded-sm hover:bg-blue-200"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-4 text-blue-800"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 4.5v15m7.5-7.5h-15"
+              />
+            </svg>
+          </button>
+        </span>
+        <span
+          class="inline-flex items-center px-2 py-1 mr-2 text-md font-medium text-gray-600 bg-gray-200 rounded"
+          v-if="foundTags.length === 0"
+        >
+          No more tags found
+        </span>
+      </div>
+      <h5 class="mt-2 text-xl font-semibold">Date & Time Recommendation</h5>
       <p>
         For
         <b>Monday 17:00</b> our model predicts a <b>78%</b> success rate. This
         is very good, however some options could be to move the event to a lter
         time. <b>18:00</b> for a potential <b>86%</b> success rate.
       </p>
-      {{ date }}
-      {{ time }}
     </div>
   </div>
 </template>
@@ -92,7 +112,32 @@
 <script setup>
 import { ref, watch } from "vue";
 const config = useRuntimeConfig();
-const props = defineProps({ date: String, time: String });
+const props = defineProps({
+  date: String,
+  time: String,
+  title: String,
+  currentTags: Array,
+});
+const emit = defineEmits(["updateTags"]);
+const foundTags = ref([]);
+const chosenTags = ref([]);
+const updatedTags = ref([]);
+
+function addTag(tag) {
+  const index = foundTags.value.indexOf(tag);
+  foundTags.value.splice(index, 1);
+  chosenTags.value.push(tag);
+  emit("updateTags", chosenTags.value);
+}
+
+const { data: response } = await useFetch("/assistant/titletags", {
+  baseURL: config.baseURL,
+  method: "POST",
+  body: {
+    title: props.title,
+  },
+});
+foundTags.value = response.value;
 
 watch(
   () => [props.date, props.time],
@@ -107,8 +152,32 @@ watch(
           time: props.time,
         },
       });
-      console.log(response.value);
     }
+  }
+);
+
+watch(
+  () => [props.title],
+  async () => {
+    if (!props.title) {
+    } else {
+      const { data: response } = await useFetch("/assistant/titletags", {
+        baseURL: config.baseURL,
+        method: "POST",
+        body: {
+          title: props.title,
+        },
+      });
+      foundTags.value = response.value;
+    }
+  }
+);
+
+watch(
+  () => [props.currentTags],
+  () => {
+    updatedTags.value = props.currentTags;
+    chosenTags.value = [];
   }
 );
 </script>

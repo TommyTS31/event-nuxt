@@ -45,6 +45,9 @@
           v-if="displayAssistant"
           :date="event.date"
           :time="event.time"
+          :title="event.title"
+          :current-tags="selectedTags"
+          @update-tags="updateAssistantTags"
         />
         <form class="space-y-6">
           <div>
@@ -70,6 +73,7 @@
               <FormTagSearch
                 :displayOption="display"
                 @selected-change="setSelected"
+                :assistantTags="assistantTags"
               />
             </div>
           </div>
@@ -134,6 +138,7 @@ const selectedTags = ref([]);
 const display = ref(false);
 const displayModal = ref(false);
 const displayAssistant = ref(false);
+const assistantTags = ref();
 
 async function createEvent() {
   const cookie = useCookie("access_token", { httpOnly: true });
@@ -155,6 +160,11 @@ function openModal() {
 
 function setSelected(s) {
   selectedTags.value = s;
+  assistantTags.value = [];
+}
+
+function updateAssistantTags(s) {
+  assistantTags.value = s;
 }
 
 function openCloseAssistant() {
@@ -164,57 +174,4 @@ function openCloseAssistant() {
     displayAssistant.value = true;
   }
 }
-
-// export default {
-//   data() {
-//     return {
-//       event: {
-//         title: "",
-//         description: "",
-//         date: "",
-//         time: "",
-//       },
-//       tagSearch: "",
-//       dbTags: [],
-//       selectedTags: [],
-//       display: false,
-//       displayModal: false,
-//     };
-//   },
-//   methods: {
-//     async createEvent() {
-//       const cookie = useCookie("access_token", { httpOnly: true });
-//       const { data: response } = await useFetch("/events/", {
-//         baseURL: config.baseURL,
-//         method: "POST",
-//         headers: { authorization: "Bearer " + cookie.value },
-//         body: {
-//           event: JSON.stringify(this.event),
-//           selectedTags: JSON.stringify(this.selectedTags),
-//         },
-//       });
-//       this.$router.push("/dashboard");
-//     },
-
-//     openModal() {
-//       this.displayModal = true;
-//     },
-//     removeTag(tag) {
-//       const index = this.tags.indexOf(tag);
-//       this.tags.splice(index, 1);
-//     },
-//     addTag(tag) {
-//       this.tags.push(tag);
-//     },
-//     handleInput() {
-//       this.display = true;
-//     },
-//     clickedOutside() {
-//       this.display = false;
-//     },
-//     setSelected(s) {
-//       this.selectedTags = s;
-//     },
-//   },
-// };
 </script>

@@ -13,6 +13,13 @@
         </button>
       </NuxtLink>
     </div>
+    <div v-if="eventOption === 2">
+      <client-only>
+        <div class="mt-3 mb-6">
+          <HomeMapCard />
+        </div>
+      </client-only>
+    </div>
     <div
       class="container flex flex-row justify-evenly w-8/12 max-md:w-10/12 flex-wrap"
       v-else
@@ -59,6 +66,7 @@ const config = useRuntimeConfig();
 
 const prop = defineProps({ eventOption: { default: 0, type: Number } });
 const shownEvents = ref();
+const locationQuery = ref("");
 const user_verification = await is_user_logged_in();
 
 const { data: response } = await useFetch("/events/all", {
@@ -68,10 +76,10 @@ const { data: response } = await useFetch("/events/all", {
 });
 shownEvents.value = JSON.parse(JSON.stringify(response.value));
 
+// Check Navigation state
 watch(
   () => prop.eventOption,
   async () => {
-    console.log(prop.eventOption);
     if (prop.eventOption === 0) {
       const { data: response } = await useFetch("/events/all", {
         baseURL: config.baseURL,

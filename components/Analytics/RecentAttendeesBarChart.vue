@@ -27,28 +27,29 @@ ChartJS.register(
 );
 
 export default {
-  name: "TagPreferenceBarChart",
+  name: "RecentAttendeesBarChart",
   components: { Bar },
   async setup() {
     const config = useRuntimeConfig();
     const cookie = useCookie("access_token", { httpOnly: true });
-    const data = ref();
+    const data = ref({});
 
-    const { data: response } = await useFetch("/analytics/preference/tag", {
+    const { data: response } = await useFetch("/analytics/attendeerecent", {
       baseURL: config.baseURL,
       method: "GET",
       headers: { authorization: "Bearer " + cookie.value },
     });
     data.value = response.value;
+
     const chartData = computed(() => {
       return {
-        labels: data.value.names,
-        datasets: [{ data: data.value.count, label: "No. Users" }],
+        labels: data.value.titles,
+        datasets: [{ data: data.value.count, label: "No. Occurences" }],
       };
     });
 
     const chartOptions = reactive({
-      backgroundColor: "rgba(42, 157, 143, 0.8)",
+      backgroundColor: "rgba(230, 162, 46, 0.8)",
       responsive: true,
       scales: {
         y: {

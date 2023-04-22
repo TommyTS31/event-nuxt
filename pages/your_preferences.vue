@@ -91,7 +91,6 @@ function openModalOnSubmit() {
 
 function setSelectedTags(e) {
   tags.value = e;
-  console.log(tags.value);
 }
 
 function setSelectedAvailability(e) {

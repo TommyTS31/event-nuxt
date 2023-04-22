@@ -1,7 +1,9 @@
 <template>
   <div>
     <div>
-      <label class="block mb-2 font-regular">Add tags that describe your event</label>
+      <label class="block mb-2 font-regular"
+        >Add tags that describe your event</label
+      >
       <input
         type="text"
         name="title"
@@ -13,8 +15,15 @@
         @input="openList"
       />
     </div>
-    <div class="relative" v-if="displayList" @focusout="clickOutside" tabindex="0">
-      <ul class="divide-y bg-gray-50 border border-gray-300 absolute w-full shadow">
+    <div
+      class="relative"
+      v-if="displayList"
+      @focusout="clickOutside"
+      tabindex="0"
+    >
+      <ul
+        class="divide-y bg-gray-50 border border-gray-300 absolute w-full shadow"
+      >
         <li
           class="hover:bg-gray-100 p-2 text-sm"
           v-for="tag in availableTags"
@@ -70,7 +79,7 @@
 
 <script>
 export default {
-  props: ["displayOption"],
+  props: ["displayOption", "assistantTags"],
   data() {
     return {
       tagSearch: "",
@@ -122,6 +131,18 @@ export default {
       });
       const tags = response.value;
       return tags;
+    },
+  },
+  watch: {
+    assistantTags(newTags) {
+      for (const tag of newTags) {
+        if (this.selectedTags.includes(tag)) {
+          continue;
+        } else {
+          this.selectedTags.push(tag);
+        }
+      }
+      this.$emit("selectedChange", this.selectedTags);
     },
   },
 };

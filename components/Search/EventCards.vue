@@ -57,14 +57,11 @@ const { data: response } = await useFetch("/events/query=" + prop.query, {
   method: "GET",
   headers: { api_key: config.api_key },
 });
-console.log(response.value);
 foundEvents.value = response.value;
 
 watch(
   () => [prop.query, prop.tags],
   async () => {
-    console.log(prop.query);
-    console.log(prop.tags);
     if (filter_tags.value.length === 0) {
       const { data: response } = await useFetch(
         "/events/query=" + prop.query + "/tags=" + prop.tags,

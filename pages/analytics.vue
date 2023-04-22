@@ -3,7 +3,19 @@
     <NavigationSideBar />
     <div class="flex justify-center mt-16">
       <div class="w-1/2 flex flex-col justify-center">
-        <h5 class="text-6xl font-semibold text-gray-500">
+        <h5 class="text-6xl font-semibold text-gray-500">Your Events</h5>
+        <FormSectionSeparate />
+        <FormSectionHeading
+          heading="Most Successful Tags"
+          note="These are the most common tags that appeared in your most successful past events"
+        />
+        <AnalyticsRecentAttendeesBarChart />
+        <FormSectionHeading
+          heading="Most Successful Tags"
+          note="These are the most common tags that appeared in your most successful past events"
+        />
+        <AnalyticsCommonTagsBarChart />
+        <h5 class="text-6xl font-semibold text-gray-500 pt-16">
           Date and Time Model Predictor
         </h5>
         <FormSectionSeparate />

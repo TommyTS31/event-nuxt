@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { ref, onBeforeMount } from "vue";
+import { ref, onMounted } from "vue";
 const config = useRuntimeConfig();
 const id = useRoute().params.id;
 const cookie = useCookie("access_token", { httpOnly: true });
@@ -19,7 +19,7 @@ useHead({
   title: "OnEvent | View Event",
 });
 
-onBeforeMount(async () => {
+onMounted(async () => {
   const { data: response } = await useFetch(address, {
     baseURL: config.baseURL,
     method: "GET",

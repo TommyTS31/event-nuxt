@@ -1,9 +1,11 @@
 <template>
-  <div v-if="!findReviewIfExists">
-    <h1 class="text-4xl font-semibold pb-2">All reviews</h1>
-  </div>
-  <div v-else>
-    <h1 class="text-4xl font-semibold pb-2">Other reviews</h1>
+  <div v-if="reviews.length != 0">
+    <div v-if="!findReviewIfExists">
+      <h1 class="text-4xl font-semibold pb-2">All reviews</h1>
+    </div>
+    <div v-else>
+      <h1 class="text-4xl font-semibold pb-2">Other reviews</h1>
+    </div>
   </div>
 
   <div v-if="reviews.length != 0">
@@ -95,9 +97,11 @@ onMounted(async () => {
     method: "GET",
     headers: { api_key: config.api_key },
   });
-  reviews.value = response.value;
-  if (user_verification) {
-    findReviewIfExists(user_verification.user.id);
+  if (response.value) {
+    reviews.value = response.value;
+    if (user_verification) {
+      findReviewIfExists(user_verification.user.id);
+    }
   }
 });
 

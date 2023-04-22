@@ -17,9 +17,11 @@
   "dependencies": {
     "@nuxtjs/dotenv": "^1.4.1",
     "@tailvue/nuxt": "^0.1.68",
+    "@types/leaflet": "^1.9.3",
     "chart.js": "^4.2.1",
     "click-outside-vue3": "^4.0.1",
     "js-cookie": "^3.0.1",
+    "leaflet": "^1.9.3",
     "nuxt-tailvue": "^1.0.95",
     "tailvue": "^0.1.68",
     "vue-chartjs": "^5.2.0"
