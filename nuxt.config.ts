@@ -10,6 +10,11 @@ export default defineNuxtConfig({
     modules: [
       '@tailvue/nuxt',
     ],
+    app: {
+      head: {
+          link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+      }
+  },
     build: {
       transpile: [/^leaflet/],
     },
