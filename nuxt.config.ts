@@ -10,6 +10,9 @@ export default defineNuxtConfig({
     modules: [
       '@tailvue/nuxt',
     ],
+    build: {
+      transpile: [/^leaflet/],
+    },
     runtimeConfig: {
       public: {
         api_key: process.env.DEFAULT_API_KEY,

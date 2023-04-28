@@ -35,7 +35,7 @@ export default {
     const data = ref({});
 
     const { data: response } = await useFetch("/analytics/attendeerecent", {
-      baseURL: config.baseURL,
+      baseURL: config.public.baseURL,
       method: "GET",
       headers: { authorization: "Bearer " + cookie.value },
     });

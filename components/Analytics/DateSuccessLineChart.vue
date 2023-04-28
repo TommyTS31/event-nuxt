@@ -54,7 +54,7 @@ export default {
     const { data: response } = await useFetch(
       "/analytics/predict/date=2023-04-10",
       {
-        baseURL: config.baseURL,
+        baseURL: config.public.baseURL,
         method: "GET",
         headers: { authorization: "Bearer " + cookie.value },
       }
@@ -133,7 +133,7 @@ export default {
       const { data: response } = await useFetch(
         "/analytics/predict/date=" + newDate,
         {
-          baseURL: config.baseURL,
+          baseURL: config.public.baseURL,
           method: "GET",
           headers: { authorization: "Bearer " + cookie.value },
         }

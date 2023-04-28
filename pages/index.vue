@@ -17,15 +17,15 @@
           placeholder="E.g. Indie Rock"
           required
         />
-        <button
-          class="bg-secondary text-white px-10 max-md:px-3 max-md:text-sm"
-        >
+        <button class="bg-secondary text-white px-10 max-md:px-3 max-md:text-sm">
           Search
         </button>
       </div>
     </div>
     <HomeNavigationTabs @event-option="(e) => (eventType = e)" />
+
     <HomeEventCards :eventOption="eventType" />
+
     <HomeFooter />
   </div>
 </template>

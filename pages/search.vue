@@ -44,14 +44,11 @@ const foundEvents = ref([]);
 const filterTags = ref("");
 
 async function searchEvents() {
-  const { data: response } = await useFetch(
-    "/events/query=" + searchQuery.value,
-    {
-      baseURL: config.baseURL,
-      method: "GET",
-      headers: { api_key: config.api_key },
-    }
-  );
+  const { data: response } = await useFetch("/events/query=" + searchQuery.value, {
+    baseURL: config.public.baseURL,
+    method: "GET",
+    headers: { api_key: config.public.api_key },
+  });
   foundEvents.value = response.value;
 }
 </script>

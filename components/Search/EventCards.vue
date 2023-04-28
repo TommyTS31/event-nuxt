@@ -6,9 +6,14 @@
   >
     <NuxtLink :to="'/event/' + event.id">
       <div class="flex">
-        <img
+        <!-- <img
           class="object-cover w-52 h-52 rounded-l-lg"
           src="../../assets/images/homepage4.jpg"
+          alt=""
+        /> -->
+        <img
+          class="object-cover w-52 h-52 rounded-l-lg"
+          :src="images[Number(event.image_id) - 1]"
           alt=""
         />
         <div class="ml-3 my-5 flex flex-col justify-between w-3/4">
@@ -44,6 +49,18 @@
 
 <script setup>
 import { ref, computed, watch } from "vue";
+import img1 from "~/assets/images/cover/1.jpg";
+import img2 from "~/assets/images/cover/2.jpg";
+import img3 from "~/assets/images/cover/3.jpg";
+import img4 from "~/assets/images/cover/4.jpg";
+import img5 from "~/assets/images/cover/5.jpg";
+import img6 from "~/assets/images/cover/6.jpg";
+import img7 from "~/assets/images/cover/7.jpg";
+import img8 from "~/assets/images/cover/8.jpg";
+import img9 from "~/assets/images/cover/9.jpg";
+import img10 from "~/assets/images/cover/10.jpg";
+import img11 from "~/assets/images/cover/11.jpg";
+const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11];
 const prop = defineProps({
   query: { default: "", type: String },
   tags: { default: "", type: String },
@@ -53,9 +70,9 @@ const filter_tags = ref([]);
 const config = useRuntimeConfig();
 
 const { data: response } = await useFetch("/events/query=" + prop.query, {
-  baseURL: config.baseURL,
+  baseURL: config.public.baseURL,
   method: "GET",
-  headers: { api_key: config.api_key },
+  headers: { api_key: config.public.api_key },
 });
 foundEvents.value = response.value;
 
@@ -66,9 +83,9 @@ watch(
       const { data: response } = await useFetch(
         "/events/query=" + prop.query + "/tags=" + prop.tags,
         {
-          baseURL: config.baseURL,
+          baseURL: config.public.baseURL,
           method: "GET",
-          headers: { api_key: config.api_key },
+          headers: { api_key: config.public.api_key },
         }
       );
       foundEvents.value = response.value;

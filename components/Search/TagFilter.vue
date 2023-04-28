@@ -51,15 +51,8 @@
             @input="openList"
           />
         </div>
-        <div
-          class="relative"
-          v-if="displayList"
-          @focusout="clickOutside"
-          tabindex="0"
-        >
-          <ul
-            class="divide-y bg-gray-50 border border-gray-300 absolute w-full shadow"
-          >
+        <div class="relative" v-if="displayList" @focusout="clickOutside" tabindex="0">
+          <ul class="divide-y bg-gray-50 border border-gray-300 absolute w-full shadow">
             <li
               class="hover:bg-gray-100 p-2 text-md"
               v-for="tag in availableTags"
@@ -147,7 +140,7 @@ async function openList() {
   const config = useRuntimeConfig();
   displayList.value = true;
   const { data: response } = await useFetch("/tags/search", {
-    baseURL: config.baseURL,
+    baseURL: config.public.baseURL,
     method: "POST",
     body: { search: tagSearch },
   });

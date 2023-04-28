@@ -24,7 +24,7 @@ export default {
     const { data: response } = await useFetch(
       "/analytics/preference/availability",
       {
-        baseURL: config.baseURL,
+        baseURL: config.public.baseURL,
         method: "GET",
         headers: { authorization: "Bearer " + cookie.value },
       }

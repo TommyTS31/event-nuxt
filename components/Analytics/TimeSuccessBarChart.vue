@@ -1,13 +1,9 @@
 <template>
   <div>
     <div class="w-1/4">
-      <label class="block py-3 text-lg font-semibold text-black"
-        >Choose a Time</label
-      >
+      <label class="block py-3 text-lg font-semibold text-black">Choose a Time</label>
       <div class="relative mb-6">
-        <div
-          class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
-        >
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -30,12 +26,7 @@
         />
       </div>
     </div>
-    <Bar
-      id="my-chart-id"
-      :options="chartOptions"
-      :data="chartData"
-      class="my-3"
-    />
+    <Bar id="my-chart-id" :options="chartOptions" :data="chartData" class="my-3" />
   </div>
 </template>
 
@@ -52,14 +43,7 @@ import {
   LinearScale,
 } from "chart.js";
 
-ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale
-);
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
 export default {
   name: "TimeSuccessBarChart",
@@ -69,14 +53,11 @@ export default {
     const cookie = useCookie("access_token", { httpOnly: true });
     const time = ref("10:00");
     const data = ref();
-    const { data: response } = await useFetch(
-      "/analytics/predict/time=" + time.value,
-      {
-        baseURL: config.baseURL,
-        method: "GET",
-        headers: { authorization: "Bearer " + cookie.value },
-      }
-    );
+    const { data: response } = await useFetch("/analytics/predict/time=" + time.value, {
+      baseURL: config.public.baseURL,
+      method: "GET",
+      headers: { authorization: "Bearer " + cookie.value },
+    });
     data.value = response.value;
 
     const chartData = computed(() => {
@@ -117,14 +98,11 @@ export default {
     });
 
     watch(time, async (newTime) => {
-      const { data: response } = await useFetch(
-        "/analytics/predict/time=" + newTime,
-        {
-          baseURL: config.baseURL,
-          method: "GET",
-          headers: { authorization: "Bearer " + cookie.value },
-        }
-      );
+      const { data: response } = await useFetch("/analytics/predict/time=" + newTime, {
+        baseURL: config.public.baseURL,
+        method: "GET",
+        headers: { authorization: "Bearer " + cookie.value },
+      });
       data.value = response.value;
     });
 

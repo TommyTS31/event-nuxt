@@ -1,9 +1,7 @@
 <template>
   <div class="flex flex-col min-h-screen">
     <NavigationTopBar />
-    <div
-      class="h-64 bg-gradient-to-r from-sky-500 to-indigo-500 flex justify-center"
-    >
+    <div class="h-64 bg-gradient-to-r from-sky-500 to-indigo-500 flex justify-center">
       <div class="translate-y-32 w-3/4">
         <img
           src="../assets/images/blank-profile.webp"
@@ -41,6 +39,7 @@
         <ProfileSignedEvents />
       </div>
     </div>
+
     <HomeFooter />
   </div>
 </template>

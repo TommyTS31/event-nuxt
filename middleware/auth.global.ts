@@ -19,7 +19,7 @@ export async function is_user_logged_in() {
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
   const auth_status = await is_user_logged_in()
-   if ((to.path === "/manage_api" || to.path === "/dashboard" || to.path === "/new_event") && !auth_status.logged) {
+   if ((to.path === "/manage_api" || to.path === "/dashboard" || to.path === "/new_event" || to.path === "/analytics") && !auth_status.logged) {
      return navigateTo("/login")
    }
 });
