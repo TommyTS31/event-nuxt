@@ -82,7 +82,7 @@ const props = defineProps({
   secondary: { default: "Close", type: String },
   title: { default: "Confirm", type: String },
   description: {
-    default: "Are you sure you want oto continue with this action?",
+    default: "Are you sure you want to continue with this action?",
     type: String,
   },
 });

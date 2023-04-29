@@ -60,7 +60,21 @@ import img8 from "~/assets/images/cover/8.jpg";
 import img9 from "~/assets/images/cover/9.jpg";
 import img10 from "~/assets/images/cover/10.jpg";
 import img11 from "~/assets/images/cover/11.jpg";
-const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11];
+import img12 from "~/assets/images/cover/11.jpg";
+const images = [
+  img1,
+  img2,
+  img3,
+  img4,
+  img5,
+  img6,
+  img7,
+  img8,
+  img9,
+  img10,
+  img11,
+  img12,
+];
 const prop = defineProps({
   query: { default: "", type: String },
   tags: { default: "", type: String },

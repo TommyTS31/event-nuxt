@@ -37,7 +37,7 @@
         </li>
         <li>
           <NuxtLink
-            to=""
+            to="/your_events"
             class="flex items-center p-2 text-base font-normal text-black hover:bg-gray-200"
           >
             <svg

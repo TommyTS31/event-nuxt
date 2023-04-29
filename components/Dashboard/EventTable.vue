@@ -92,7 +92,7 @@ const end = ref(5);
 const cookie = useCookie("access_token", { httpOnly: true });
 onMounted(async () => {
   const { data: response } = await useFetch("/events/all/user", {
-    baseURL: config.baseURL,
+    baseURL: config.public.baseURL,
     method: "GET",
     headers: { authorization: "Bearer " + cookie.value },
   });
