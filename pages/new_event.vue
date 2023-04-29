@@ -11,9 +11,7 @@
         />
 
         <div class="flex justify-between">
-          <h5 class="text-5xl font-semibold text-primary-400">
-            Create a new event
-          </h5>
+          <h5 class="text-5xl font-semibold text-primary-400">Create a new event</h5>
           <div class="pb-10">
             <button
               @click="openCloseAssistant"
@@ -40,7 +38,6 @@
             </button>
           </div>
         </div>
-
         <FormAssistant
           v-if="displayAssistant"
           :date="event.date"
@@ -49,7 +46,7 @@
           :current-tags="selectedTags"
           @update-tags="updateAssistantTags"
         />
-        <form class="space-y-6">
+        <div class="space-y-6">
           <div>
             <FormSectionHeading
               heading="Basic Details"
@@ -75,6 +72,9 @@
                 @selected-change="setSelected"
                 :assistantTags="assistantTags"
               />
+            </div>
+            <div class="mt-6">
+              <FormImageSelector @send-index="setImageIndex" />
             </div>
           </div>
           <FormSectionSeparate />
@@ -114,7 +114,7 @@
           <div class="pb-2 pt-8">
             <FormSubmitButton buttonText="Create Event" @click="openModal" />
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
@@ -131,6 +131,7 @@ const event = ref({
   description: "",
   date: "",
   time: "",
+  image_id: "1",
 });
 const tagSearch = ref("");
 const dbTags = ref([]);
@@ -161,6 +162,10 @@ function openModal() {
 function setSelected(s) {
   selectedTags.value = s;
   assistantTags.value = [];
+}
+
+function setImageIndex(n) {
+  event.value.image_id = String(n);
 }
 
 function updateAssistantTags(s) {

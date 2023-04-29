@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="foundEvents.length > 0"
-    class="bg-gray-50 border shadow text-gray-700 mb-8 rounded-lg md:ml-6 mx-6 hover:bg-white transition hover:scale-105 duration-300"
+    class="bg-gray-50 border shadow text-gray-700 mb-8 rounded-sm md:ml-6 mx-6 hover:bg-white transition hover:scale-105 duration-300"
     v-for="event in foundEvents"
   >
     <NuxtLink :to="'/event/' + event.id">
@@ -12,7 +12,7 @@
           alt=""
         /> -->
         <img
-          class="object-cover w-52 h-52 rounded-l-lg"
+          class="object-cover w-52 h-52 rounded-l-sm"
           :src="images[Number(event.image_id) - 1]"
           alt=""
         />

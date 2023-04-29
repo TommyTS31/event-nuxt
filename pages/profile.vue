@@ -40,6 +40,12 @@
       </div>
     </div>
 
+    <div class="flex justify-center mt-6 mb-16">
+      <div class="w-3/4">
+        <FormImageSelector />
+      </div>
+    </div>
+
     <HomeFooter />
   </div>
 </template>

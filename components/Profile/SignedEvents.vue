@@ -128,7 +128,7 @@ const verification = await is_user_logged_in();
 const events = ref();
 
 const { data: response } = await useFetch("/auth/profile", {
-  baseURL: config.baseURL,
+  baseURL: config.public.baseURL,
   method: "GET",
   headers: { authorization: "Bearer " + cookie.value },
 });
