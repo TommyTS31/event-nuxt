@@ -33,9 +33,7 @@
           />
           <AnalyticsDateSuccessLineChart />
         </div>
-        <h5 class="text-6xl font-semibold text-gray-500 pt-16">
-          Preference Analytics
-        </h5>
+        <h5 class="text-6xl font-semibold text-gray-500 pt-16">Preference Analytics</h5>
         <FormSectionSeparate />
         <div class="flex my-2">
           <div class="mx-2">
@@ -67,4 +65,8 @@
 
 <script script>
 import { ref, computed } from "vue";
+
+useHead({
+  title: "OnEvent | Analytics",
+});
 </script>

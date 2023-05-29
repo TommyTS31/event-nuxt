@@ -127,6 +127,10 @@ const images = [
   img12,
 ];
 
+useHead({
+  title: "OnEvent | Your Events",
+});
+
 const config = useRuntimeConfig();
 const events = ref();
 const expired = ref([]);

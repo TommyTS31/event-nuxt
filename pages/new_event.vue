@@ -141,6 +141,10 @@ const displayModal = ref(false);
 const displayAssistant = ref(false);
 const assistantTags = ref();
 
+useHead({
+  title: "OnEvent | New Event",
+});
+
 async function createEvent() {
   const cookie = useCookie("access_token", { httpOnly: true });
   const { data: response } = await useFetch("/events/", {

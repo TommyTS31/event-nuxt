@@ -1,5 +1,5 @@
 <template>
-  <div class="border border-gray-300 rounded-md py-6 px-5 my-6 h-96">
+  <div class="border border-gray-300 rounded-md py-6 px-5 my-6">
     <div class="flex">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -38,30 +38,27 @@
         />
       </svg>
       <p class="w-11/12 pl-2 text-sm">
-        Disclaimer: The optimal settings provided by this experimental feature
-        are based on certain assumptions and may not always be accurate or
-        appropriate for every event. Users should exercise caution and use their
-        own judgement when applying these settings.
+        Disclaimer: The optimal settings provided by this experimental feature are based
+        on certain assumptions and may not always be accurate or appropriate for every
+        event. Users should exercise caution and use their own judgement when applying
+        these settings.
       </p>
     </div>
     <div>
       <h5 class="mt-2 text-xl font-semibold">Recommended Tags</h5>
       <p v-if="title.length > 1 && foundTags.length > 0" class="text-lg">
-        Based on the title you have written, we recommend that you add the
-        following tags help people identify your event:
+        Based on the title you have written, we recommend that you add the following tags
+        help people identify your event:
       </p>
       <p v-if="title.length < 1" class="text-lg">
         Please enter a suitable title so that we can give you suggestions
       </p>
       <p
-        v-if="
-          title.length > 1 && foundTags.length === 0 && updatedTags.length === 0
-        "
+        v-if="title.length > 1 && foundTags.length === 0 && updatedTags.length === 0"
         class="text-lg"
       >
-        Sorry but we couldn't extract any (more) tags from your title that are
-        present in our system. Please use the search function to find suitable
-        tags.
+        Sorry but we couldn't extract any (more) tags from your title that are present in
+        our system. Please use the search function to find suitable tags.
       </p>
       <div class="my-3">
         <span
@@ -98,13 +95,32 @@
           No more tags found
         </span>
       </div>
-      <h5 class="mt-2 text-xl font-semibold">Date & Time Recommendation</h5>
-      <p>
-        For
-        <b>Monday 17:00</b> our model predicts a <b>78%</b> success rate. This
-        is very good, however some options could be to move the event to a lter
-        time. <b>18:00</b> for a potential <b>86%</b> success rate.
-      </p>
+      <div class="mb-6">
+        <h5 class="mt-2 text-xl font-semibold">Date & Time Recommendation</h5>
+        <div v-if="!predicted_ratio">
+          <p class="text-lg">
+            Please enter a date and time so that we can provide predicitons
+          </p>
+        </div>
+        <div v-else>
+          <p class="text-lg">
+            Our models have predicted a success ratio of: (Ratio of people who would
+            attend to those who won't)
+          </p>
+          <div class="flex">
+            <p class="text-4xl font-bold text-primary-400">
+              {{ Math.round(predicted_ratio["0"] * 100) }}%
+            </p>
+            <p class="text-2xl pl-2 pt-1.5">
+              for a {{ parseCreatedDate(date) }} at {{ formatTime(time) }}
+            </p>
+          </div>
+          <p class="text-md text-red-600">
+            *This prediction only takes into account date and time, and no other
+            contextual information.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -123,6 +139,8 @@ const foundTags = ref([]);
 const chosenTags = ref([]);
 const updatedTags = ref([]);
 
+const predicted_ratio = ref(0);
+
 function addTag(tag) {
   const index = foundTags.value.indexOf(tag);
   foundTags.value.splice(index, 1);
@@ -130,39 +148,52 @@ function addTag(tag) {
   emit("updateTags", chosenTags.value);
 }
 
-const { data: response } = await useFetch("/assistant/titletags", {
-  baseURL: config.baseURL,
+const { data: title_tags } = await useFetch("/assistant/titletags", {
+  baseURL: config.public.baseURL,
   method: "POST",
   body: {
     title: props.title,
   },
 });
-foundTags.value = response.value;
+foundTags.value = title_tags.value;
 
+const { data: predict_response } = await useFetch("/assistant/date_time", {
+  baseURL: config.public.baseURL,
+  method: "POST",
+  body: {
+    date: props.date,
+    time: props.time,
+  },
+});
+predicted_ratio.value = predict_response.value;
+
+// Watch Prop Change to recalculate success ratio
 watch(
   () => [props.date, props.time],
   async () => {
     if (!props.date || !props.time) {
     } else {
-      const { data: response } = await useFetch("/assistant/modeltest", {
-        baseURL: config.baseURL,
+      const { data: response } = await useFetch("/assistant/date_time", {
+        baseURL: config.public.baseURL,
         method: "POST",
         body: {
           date: props.date,
           time: props.time,
         },
       });
+      predicted_ratio.value = response.value;
     }
   }
 );
 
+// Watch title changew to suggest new titles.
 watch(
   () => [props.title],
   async () => {
     if (!props.title) {
     } else {
       const { data: response } = await useFetch("/assistant/titletags", {
-        baseURL: config.baseURL,
+        baseURL: config.public.baseURL,
         method: "POST",
         body: {
           title: props.title,
@@ -180,4 +211,16 @@ watch(
     chosenTags.value = [];
   }
 );
+
+function formatTime(time) {
+  const parts = time.split(":");
+  return parts[0] + ":" + parts[1];
+}
+
+function parseCreatedDate(date) {
+  const toParse = new Date(date);
+  return toParse.toLocaleDateString("en-UK", {
+    weekday: "long",
+  });
+}
 </script>

@@ -33,7 +33,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 useHead({
-  title: "OnEvent | Home",
+  title: "OnEvent",
   link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
 });
 const eventType = ref(0);
