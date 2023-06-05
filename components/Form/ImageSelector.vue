@@ -96,7 +96,7 @@ const imageIndex = ref(-1);
 const openDropdown = ref(false);
 
 function selectImage(n) {
-  imageIndex.value = n + 1;
+  imageIndex.value = n;
   emit("sendIndex", imageIndex.value);
 }
 

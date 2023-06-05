@@ -14,7 +14,7 @@
             </div>
             <div class="pl-6 pr-3">
               <h5 class="text-md font-bold text-gray-400">Events</h5>
-              <p class="text-lg">Showing 10 Events</p>
+              <p class="text-lg">Showing {{ eventCount }} Events</p>
             </div>
           </div>
           <button
@@ -56,6 +56,7 @@ const config = useRuntimeConfig();
 const mapElement = ref(null);
 const locationQuery = ref("");
 const loadingStatus = ref(false);
+const eventCount = ref(0);
 let map;
 
 useHead({
@@ -126,6 +127,7 @@ async function setLocation() {
       continue;
     }
   }
+  eventCount.value = eventMarkerArray.length - 1;
   const eventMarkerLayer = L.layerGroup(eventMarkerArray);
   map.removeLayer(eventMarkerLayer);
   eventMarkerLayer.addTo(map);

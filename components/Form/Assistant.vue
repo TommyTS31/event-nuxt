@@ -103,10 +103,7 @@
           </p>
         </div>
         <div v-else>
-          <p class="text-lg">
-            Our models have predicted a success ratio of: (Ratio of people who would
-            attend to those who won't)
-          </p>
+          <p class="text-lg">Our models have predicted an attendance rate of:</p>
           <div class="flex">
             <p class="text-4xl font-bold text-primary-400">
               {{ Math.round(predicted_ratio["0"] * 100) }}%

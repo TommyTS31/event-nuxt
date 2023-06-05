@@ -21,15 +21,15 @@
         <FormSectionSeparate />
         <div class="mx-2 my-2">
           <FormSectionHeading
-            heading="Success Ratio Per Day"
-            note="This is the predicted success of an event by our model based on a specific time of day (Note: The success ratio predicted are just experimental value since there are several factors that have been left out)"
+            heading="Attendance Rate Per Day"
+            note="This is the predicted attendance rate of an event by our model based on a specific time of day (Note: The attendance rate predicted are just experimental value since there are several factors that have been left out)"
           />
           <AnalyticsTimeSuccessBarChart />
         </div>
         <div class="mx-2">
           <FormSectionHeading
-            heading="Success Ratio Per Time"
-            note="This is the predicted success of an event by our model based on a specific date (Note: At the moment, we only consider the day of the week so the year and month are not relevant to making predicitons)"
+            heading="Attendance Rate Per Time"
+            note="This is the predicted attendance rate of an event by our model based on a specific date (Note: At the moment, we only consider the day of the week so the year and month are not relevant to making predicitons)"
           />
           <AnalyticsDateSuccessLineChart />
         </div>
@@ -37,25 +37,16 @@
         <FormSectionSeparate />
         <div class="flex my-2">
           <div class="mx-2">
-            <FormSectionHeading
-              heading="Availabiltiy Per Day"
-              note="This is the predicted success of an event by our model based on a specific date (Note: At the moment, we only consider the day of the week so the year and month are not relevant to making predicitons)"
-            />
+            <FormSectionHeading heading="Availabiltiy Per Day" />
             <AnalyticsAvailabilityPreferencePieChart type="week" />
           </div>
           <div class="mx-2">
-            <FormSectionHeading
-              heading="Availability Per Week"
-              note="This is the predicted success of an event by our model based on a specific date (Note: At the moment, we only consider the day of the week so the year and month are not relevant to making predicitons)"
-            />
+            <FormSectionHeading heading="Availability Per Week" />
             <AnalyticsAvailabilityPreferencePieChart type="day" />
           </div>
         </div>
         <div class="mx-2">
-          <FormSectionHeading
-            heading="User Preferences"
-            note="This is the predicted success of an event by our model based on a specific date (Note: At the moment, we only consider the day of the week so the year and month are not relevant to making predicitons)"
-          />
+          <FormSectionHeading heading="User Preferences" />
           <AnalyticsTagPreferenceBarChart />
         </div>
       </div>
