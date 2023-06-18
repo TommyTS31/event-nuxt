@@ -100,7 +100,7 @@ export default {
       const config = useRuntimeConfig();
       this.displayList = true;
       const { data: response } = await useFetch("/tags/search", {
-        baseURL: config.baseURL,
+        baseURL: config.public.baseURL,
         method: "POST",
         body: { search: this.tagSearch },
       });
@@ -118,7 +118,7 @@ export default {
     async findTags() {
       const config = useRuntimeConfig();
       const { data: response } = await useFetch("/tags/search", {
-        baseURL: config.baseURL,
+        baseURL: config.public.baseURL,
         method: "POST",
         body: { search: this.tagSearch },
       });
